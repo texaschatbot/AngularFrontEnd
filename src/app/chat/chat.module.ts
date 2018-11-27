@@ -6,14 +6,19 @@ import { FormsModule } from '@angular/forms';
 
 import { LinkifyPipe } from './linkify.pipe';
 
+import { RouterModule } from '@angular/router';
+
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot([])
   ],
   declarations: [ChatDialogComponent, LinkifyPipe],
   exports: [ChatDialogComponent],
   providers: [ChatService]
 })
-export class ChatModule { 
+export class ChatModule {
+
+  
 }

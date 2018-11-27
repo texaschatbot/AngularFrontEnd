@@ -35,7 +35,6 @@ export class ChatService {
     this.update(userMessage);
 
     return this.client.textRequest(msg).then(res => {
-      console.log(res);
       let speech = res.result.fulfillment.speech;
       let subMessages: String[]
       if (speech === '') {
@@ -44,12 +43,8 @@ export class ChatService {
         for (let i = 0; i < res.result.fulfillment.messages.length; i++){
 
           subMessages.push(res.result.fulfillment.messages[i].speech)
-          //speech = speech + res.result.fulfillment.messages[i].speech +'\n' ;
         }
       }
-
-      
-
       const botMessage = new Message(speech, 'TeXA', subMessages);
       this.update(botMessage);
     });

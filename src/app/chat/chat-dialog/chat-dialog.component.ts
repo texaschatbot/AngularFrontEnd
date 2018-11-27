@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
 import { ChatService, Message } from '../chat.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/scan';
@@ -8,11 +8,18 @@ import 'rxjs/add/operator/scan';
   templateUrl: './chat-dialog.component.html',
   styleUrls: ['./chat-dialog.component.css']
 })
-export class ChatDialogComponent implements OnInit {
+export class ChatDialogComponent implements OnInit, AfterViewChecked {
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
   messages : Observable<Message[]>;
-  formValue : string;
+  formValue: string;
+  messagesCount: number;
 
   constructor(private chat: ChatService) { }
+
+  doSomething(test: string) {
+    console.log(test);
+    console.log('Hooo');
+  }
 
   ngOnInit() {
     this.messages = this.chat.conversation.asObservable()
@@ -20,7 +27,16 @@ export class ChatDialogComponent implements OnInit {
   }
 
   sendMessage() {
-    this.chat.converse(this.formValue);
+    if (this.formValue.trim() !== '') {
+      this.chat.converse(this.formValue);
+    }
+
     this.formValue = '';
+  }
+
+  ngAfterViewChecked() {
+    try {
+      window.scrollTo(0, this.myScrollContainer.nativeElement.scrollHeight);
+    } catch (err) { } 
   }
 }

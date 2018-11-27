@@ -6,23 +6,27 @@
 
 <h1>TeXA</h1> <h2>Texas Assistant</h2>
 
-<div scroll-glue>
-<ng-container *ngFor="let message of messages | async">
-  <div class="message"
-       [ngClass]="{'from' : message.sentBy === 'TeXA',
+<div scroll-glue #scrollMe>
+  <ng-container *ngFor="let message of messages | async; let i = index; last as isLast">
+
+
+
+    <div class="message"
+         [ngClass]="{'from' : message.sentBy === 'TeXA',
                 'to' : message.sentBy === 'YOU'}">
-   {{message.sentBy}}
-    <br>
-   <div [innerHTML]="message.contant  | linkify"></div>
+      {{message.sentBy}}
+      <br>
+      <div [innerHTML]="message.contant  | linkify"></div>
 
-    <ng-container *ngFor="let subMessage of message.subMessages">
-      {{subMessage}} <br>
-    </ng-container>
-  </div>    
-</ng-container>
+      <ng-container *ngFor="let subMessage of message.subMessages">
+        {{subMessage}} <br>
+      </ng-container>
+    </div>
+  </ng-container>
 </div>
-<label for="nameField">Your Message</label>
-
-<input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text">
-<br>
-<button (click)="sendMessage()">Send</button>
+<div class="input-group mb-3">
+  <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text" class="form-control" placeholder="Enter Your Message" aria-label="Enter Your Message" aria-describedby="button-addon2">
+  <div class="input-group-append">
+    <button (click)="sendMessage()" class="btn btn-primary bg-dark" type="button" id="button-addon2">Send</button>
+  </div>
+</div>

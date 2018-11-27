@@ -15,8 +15,6 @@ export class LinkifyPipe implements PipeTransform {
   private stylize(text: string): string {
     let stylizedText: string = '';
     if (text && text.length > 0) {
-      console.log(text);
-      console.log(text);
 
       for (let t of text.split(" ")) {
         if ((t.startsWith("@") || t.startsWith("https")) && t.length>1)
