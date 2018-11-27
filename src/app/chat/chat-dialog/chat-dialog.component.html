@@ -1,15 +1,17 @@
 
-    <script>
-      angular
-        .module('ChatModule', ['luegg.directives', 'ngSanitize']);
-    </script>
+<script>
+  angular
+    .module('ChatModule', ['luegg.directives', 'ngSanitize']);
+</script>
+<div class="header">
+  <h1>TeXA</h1> <h2>Texas Assistant</h2>
+  <div style="background-color:white !important;min-height:10Px !important;">
+  </div>
+</div>
 
-<h1>TeXA</h1> <h2>Texas Assistant</h2>
 
-<div scroll-glue #scrollMe>
+<div scroll-glue #scrollMe class="footer-chat">
   <ng-container *ngFor="let message of messages | async; let i = index; last as isLast">
-
-
 
     <div class="message"
          [ngClass]="{'from' : message.sentBy === 'TeXA',
@@ -24,9 +26,11 @@
     </div>
   </ng-container>
 </div>
-<div class="input-group mb-3">
+
+<div class="input-group mb-3 footer">
   <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text" class="form-control" placeholder="Enter Your Message" aria-label="Enter Your Message" aria-describedby="button-addon2">
   <div class="input-group-append">
     <button (click)="sendMessage()" class="btn btn-primary bg-dark" type="button" id="button-addon2">Send</button>
   </div>
 </div>
+
