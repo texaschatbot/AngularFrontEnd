@@ -3,26 +3,56 @@
 
 
 /* You can add global styles to this file, and also import other style files */
-.message {
-    border-radius: 50px;
-    margin: 0 15px 10px;
-    padding: 15px 20px;
-    position: relative;
-    font-weight: bold;
+.footer {
+  position: fixed;
+  bottom: 1px;
+  z-index: 10;
 }
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: #939297;
+  margin-bottom: 10px;
+  backface-visibility: visible;
+}
+
+
+.footer-chat {
+  vertical-align: bottom;
+  z-index: -1;
+  position: page;
+  bottom: 10px;
+  top: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10% 2% 8% 10%;
+}
+
+.message {
+  border-radius: 50px;
+  margin: 0 15px 10px;
+  padding: 15px 20px;
+  position: relative;
+  font-weight: bold;
+}
+
   .message.to {
     background-color: #939297;
     color: #ffffff;
     margin-left: 100px;
     text-align: right;
   }
-.message.from {
+
+  .message.from {
     background-color: #E5E4E9;
     color: #363636;
     margin-right: 100px;
+  }
 
-}
-.message.to + .message.to,
-.message.from + .message.from {
-margin-top: -10px;
-}
+    .message.to + .message.to,
+    .message.from + .message.from {
+      margin-top: -10px;
+    }
