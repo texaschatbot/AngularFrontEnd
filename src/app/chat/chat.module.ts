@@ -4,12 +4,14 @@ import { ChatDialogComponent } from './chat-dialog/chat-dialog.component';
 import { ChatService } from './chat.service';
 import { FormsModule } from '@angular/forms';
 
+import { LinkifyPipe } from './linkify.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule
   ],
-  declarations: [ChatDialogComponent],
+  declarations: [ChatDialogComponent, LinkifyPipe],
   exports: [ChatDialogComponent],
   providers: [ChatService]
 })
