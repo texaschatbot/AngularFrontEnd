@@ -31,7 +31,7 @@ export class ChatService {
   }
 
   converse(msg : string) {
-    const userMessage = new Message(msg, 'YOU');
+    const userMessage = new Message(msg, 'You');
     this.update(userMessage);
 
     return this.client.textRequest(msg).then(res => {

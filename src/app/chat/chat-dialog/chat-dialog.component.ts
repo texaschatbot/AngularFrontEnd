@@ -31,7 +31,8 @@ export class ChatDialogComponent implements OnInit, AfterViewChecked {
 
   ngAfterViewChecked() {
     try {
-      window.scrollTo(0, this.myScrollContainer.nativeElement.scrollHeight);
+      var objDiv = document.getElementById("style-2");
+      objDiv.scrollTop = objDiv.scrollHeight;
     } catch (err) { } 
   }
 }
