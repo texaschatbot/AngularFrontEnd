@@ -3,34 +3,46 @@
   angular
     .module('ChatModule', ['luegg.directives', 'ngSanitize']);
 </script>
-<div class="header">
-  <h1>TeXA</h1> <h2>Texas Assistant</h2>
-  <div style="background-color:white !important;min-height:10Px !important;">
-  </div>
-</div>
-
-
-<div scroll-glue #scrollMe class="footer-chat">
-  <ng-container *ngFor="let message of messages | async; let i = index; last as isLast">
-
-    <div class="message"
-         [ngClass]="{'from' : message.sentBy === 'TeXA',
-                'to' : message.sentBy === 'YOU'}">
-      {{message.sentBy}}
-      <br>
-      <div [innerHTML]="message.contant  | linkify"></div>
-
-      <ng-container *ngFor="let subMessage of message.subMessages">
-        {{subMessage}} <br>
-      </ng-container>
+<div>
+  <div class="header">
+    <div style="padding-left:8px;">
+      <h1>
+        <div style="font-family: 'Text Me One', sans-serif; font-weight: bold;">TeXA</div>
+      </h1>
+      <h4>
+        <div style="font-family: 'Text Me One', sans-serif;">
+          Texas Assistant
+        </div>
+      </h4>
     </div>
-  </ng-container>
-</div>
+    <div style="background-color:white !important;min-height:10Px !important;">
+    </div>
+     
+  </div>
 
-<div class="input-group mb-3 footer">
-  <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text" class="form-control" placeholder="Enter Your Message" aria-label="Enter Your Message" aria-describedby="button-addon2">
-  <div class="input-group-append">
-    <button (click)="sendMessage()" class="btn btn-primary bg-dark" type="button" id="button-addon2">Send</button>
+
+  <div scroll-glue #scrollMe class="footer-chat scrollbar"  id="style-2">
+    <ng-container *ngFor="let message of messages | async; let i = index; last as isLast">
+
+      <div class="message"
+           [ngClass]="{'from' : message.sentBy === 'TeXA',
+                'to' : message.sentBy === 'You'}">
+        <span>{{message.sentBy}}</span>
+        <br>
+        <div [innerHTML]="message.contant  | linkify"></div>
+
+        <ng-container *ngFor="let subMessage of message.subMessages">
+          {{subMessage}} <br>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="input-group mb-3 footer">
+    <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text"  class="form-control" placeholder="Enter Your Message" aria-label="Enter Your Message" aria-describedby="button-addon2">
+    <div class="input-group-append">
+      <button (click)="sendMessage()" class="btn btn-primary bg-dark" style="border-color:aliceblue !important" type="button" id="button-addon2">Send</button>
+    </div>
   </div>
 </div>
 
