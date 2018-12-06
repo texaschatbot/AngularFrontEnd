@@ -14,9 +14,12 @@
 }
 /* You can add global styles to this file, and also import other style files */
 .footer {
-  position: fixed;
-  bottom: 30px;
+  padding-top: 30px;
+  padding-bottom: 0px;
   z-index: 10;
+  width: 190%;
+  min-width: 190%;
+  max-width: 190%;
 }
 
 .header {
@@ -31,15 +34,29 @@
 
 
 .footer-chat {
-  display: block;
   overflow-y: scroll;
   z-index: -1;
-  position: fixed;
-  padding: 0% 2% 0% 2%;
-  height: 70%;
+  padding: 0% 0% 0% 0%;
+  height: 400px;
+  min-height: 400px;
+  max-height: 400px;
   border-style: ridge;
-  min-width: 48%;
-  max-width: 48%;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.start-help {
+  overflow-y: scroll;
+  z-index: -1;
+  padding: 0% 0% 0% 0%;
+  height: 480px;
+  min-height: 480px;
+  max-height: 480px;
+  border-style: ridge;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
 }
 
 .message {
