@@ -17,8 +17,15 @@ export class LinkifyPipe implements PipeTransform {
     if (text && text.length > 0) {
 
       for (let t of text.split(" ")) {
-        if ((t.startsWith("@") || t.startsWith("https")) && t.length>1)
-          stylizedText += `<a href="${t}"  target="_blank">${t}</a> `;
+        if ((t.startsWith("@") || t.startsWith("https")) && t.length > 1) {
+
+          let urlDisplay = t;
+          if (t.length > 30) // only shorten if greater than 30
+            // change value 21 and 9 as per requirement
+            urlDisplay = urlDisplay.substr(0, 21) + '...' + urlDisplay.substring(t.length - 9, t.length);
+
+          stylizedText += `<a href="${t}"  target="_blank">${urlDisplay}</a> `;
+        }
         else
           stylizedText += t + " ";
       }
