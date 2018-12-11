@@ -8,5 +8,37 @@ import 'rxjs/add/operator/scan';
   templateUrl: './chat-dialog.component.html',
   styleUrls: ['./chat-dialog.component.css']
 })
-export class ChatDialogComponent  {
+export class ChatDialogComponent implements OnInit, AfterViewChecked {
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
+  messages: Observable<Message[]>;
+  formValue: string;
+  messagesCount: number;
+
+  constructor(private chat: ChatService) { }
+
+  ngOnInit() {
+    this.messages = this.chat.conversation.asObservable()
+      .scan((acc, val) => acc.concat(val));
+  }
+
+  sendMessage() {
+    if (this.formValue.trim() !== '') {
+      this.chat.converse(this.formValue);
+    }
+
+    this.formValue = '';
+  }
+
+  ngAfterViewChecked() {
+    try {
+      var objDiv = document.getElementById("style-2");
+      objDiv.scrollTop = objDiv.scrollHeight;
+    } catch (err) { }
+  }
+
+  sendMessageFromLink(message: string) {
+
+    this.formValue = message;
+    this.sendMessage();
+  }
 }
