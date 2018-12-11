@@ -1,3 +1,4 @@
+<!--
 <div fxLayout="row wrap"
      fxLayout.lt-sm="column"
      fxLayoutGap="32px"
@@ -13,11 +14,174 @@
          fxFlex.lt-md="0 1 calc(50% - 32px)"
          fxFlex.lt-sm="100%"></card2>
 </div>
+    -->
+<div class="d-flex flex-column">
+  <div class="p-2 bg-secondary text-white">
+    <div style="width: 50%; float:left;">
+      <div style="font-weight: bold;"><h1>TeXA</h1></div>
+      <div><h4>Texas Assistant</h4></div>
+    </div>
 
-<script>
-  angular
-    .module('ChatModule', ['luegg.directives', 'ngSanitize']);
-</script>
+    <div style="width: 50%; float:right;">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <p style="font-weight: bold;">Texas Child Support System handles 1 million cases every year.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">Texas Child Support System has supported half 2 million childs.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">Texas Child Support System is biggest one in US.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row p-2">
+    <div class="col-sm">
+      <div scroll-glue #scrollMe class="footer-chat scrollbar" id="style-2">
+        <div style="height:10px; background-color:white;"></div>
+        <ng-container *ngFor="let message of messages | async; let i = index; last as isLast">
+
+          <div class="message"
+               [ngClass]="{'from' : message.sentBy === 'TeXA',
+                'to' : message.sentBy === 'You'}">
+            <span>{{message.sentBy}}</span>
+            <br>
+            <div [innerHTML]="message.contant  | linkify"></div>
+
+            <ng-container *ngFor="let subMessage of message.subMessages">
+              {{subMessage}} <br>
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+
+      <div class="input-group mb-3 footer">
+        <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text" style="width:45%;"
+               placeholder="Enter Your Message" aria-label="Enter Your Message" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button (click)="sendMessage()" class="btn btn-primary bg-secondary"
+                  style="border-color:aliceblue !important" type="button" id="button-addon2">
+            Send
+          </button>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="col-sm">
+      <div class="accordion start-help scrollbar" style="overflow-x:hidden;" id="accordionExample">
+        <div style="height:10px; background-color:white;"></div>
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                T2 Wiki
+              </button>
+            </h5>
+          </div>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <button (click)="sendMessageFromLink('How to setup workspace for batch development?')" class="btn btn-link" type="button">
+                How to setup workspace for batch development?
+              </button>
+              <br><hr>
+              <button (click)="sendMessageFromLink('Where will i get all developer guides?')" class="btn btn-link" type="button">
+                Where will i get all developer guides?
+              </button>
+              <br><hr>
+              <button (click)="sendMessageFromLink('How to begin with  batch development?')" class="btn btn-link" type="button">
+                How to begin with  batch development?
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                IWO
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+              <button (click)="sendMessageFromLink('Already 50% of my employee\'s wages are getting withheld, shall I go on withholding ATFEE on top of that?')" class="btn btn-link" type="button">
+                Already 50% of my employee's wages are getting withheld,<br>shall I go on withholding ATFEE on top of that?
+              </button>
+              <br><hr>
+              <button (click)="sendMessageFromLink('What should employer do if receives a wrong order?')" class="btn btn-link" type="button">
+                What should employer do if receives a wrong order?
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                T2 Org Chart
+              </button>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+              <button (click)="sendMessageFromLink('Where I can find T2 organization chart?')" class="btn btn-link" type="button">
+                Where I can find T2 organization chart?
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingFour">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                Developer Help Corner
+              </button>
+            </h5>
+          </div>
+          <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+            <div class="card-body">
+              <button (click)="sendMessageFromLink('What are the code code values for Admin Review Level category?')" class="btn btn-link" type="button">
+                What are the code code values for Admin Review Level category?
+              </button>
+              <br><hr>
+              <button (click)="sendMessageFromLink('What is the database schema detail for Predev1 database?')" class="btn btn-link" type="button">
+                What is the database schema detail for Predev1 database?
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-fixed-bottom navbar-dark bg-secondary text-white">
+  <!-- Navbar content -->
+
+  <div class="navbar-brand">Contact Us at - (800) 850-6442</div>
+  <!--<div class="navbar-brand" href="#">Home <span class="sr-only">(current)</span></div>
+    <div class="navbar-brand" href="#">Link</div>
+    <div class="navbar-brand" href="#">Disabled</div> -->
+
+  </nav>
+
+
+  <script>
+    angular
+      .module('ChatModule', ['luegg.directives', 'ngSanitize']);
+  </script>
 
 
 

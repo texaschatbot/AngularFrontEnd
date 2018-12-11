@@ -4,6 +4,10 @@
   font-family: 'Text Me One', sans-serif;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .btn-link {
   color: #939297;
 }
