@@ -21,7 +21,7 @@ import { Card2Component } from './card2/card2.component';
   ],
   declarations: [ChatDialogComponent, LinkifyPipe, CardComponent, Card1Component, Card2Component],
   exports: [ChatDialogComponent],
-  providers: [ChatService]
+  providers: [ChatService, Card2Component, Card1Component]
 })
 export class ChatModule {
 

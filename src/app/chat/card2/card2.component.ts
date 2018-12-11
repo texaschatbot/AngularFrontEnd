@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Card1Component } from '../card1/card1.component';
 
 @Component({
   selector: 'card2',
@@ -14,6 +15,18 @@ import { Component, OnInit } from '@angular/core';
   `]
 })
 export class Card2Component {
-  
+
+  constructor(private card1: Card1Component) {
+
+  }
+
+  sendMessageFromLink(message: string) {
+    
+    this.card1.formValue = message;
+    this.card1.sendMessage();
+  }
+
+
+
 
 }
