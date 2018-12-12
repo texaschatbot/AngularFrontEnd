@@ -13,8 +13,12 @@ export class ChatDialogComponent implements OnInit, AfterViewChecked {
   messages: Observable<Message[]>;
   formValue: string;
   messagesCount: number;
+  
 
-  constructor(private chat: ChatService) { }
+
+  constructor(private chat: ChatService) {
+    
+  }
 
   ngOnInit() {
     this.messages = this.chat.conversation.asObservable()

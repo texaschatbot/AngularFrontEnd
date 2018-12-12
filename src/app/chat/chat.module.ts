@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { CardComponent } from './card/card.component';
 import { Card1Component } from './card1/card1.component';
 import { Card2Component } from './card2/card2.component';
+import { ReadMoreComponent } from './read-more/read.more.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { Card2Component } from './card2/card2.component';
     FlexLayoutModule,
     RouterModule.forRoot([])
   ],
-  declarations: [ChatDialogComponent, LinkifyPipe, CardComponent, Card1Component, Card2Component],
+  declarations: [ChatDialogComponent, LinkifyPipe, CardComponent, Card1Component, Card2Component, ReadMoreComponent],
   exports: [ChatDialogComponent],
   providers: [ChatService, Card2Component, Card1Component]
 })

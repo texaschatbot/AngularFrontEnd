@@ -8,6 +8,7 @@ body {
   overflow-x: hidden;
 }
 
+
 .btn-link {
   color: #939297;
 }
@@ -21,9 +22,9 @@ body {
   padding-top: 30px;
   padding-bottom: 0px;
   z-index: 10;
-  width: 190%;
-  min-width: 190%;
-  max-width: 190%;
+  width: 180%;
+  min-width: 180%;
+  max-width: 180%;
 }
 
 .header {
