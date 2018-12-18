@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewChecked, ViewChild, ElementRef } from '@ang
 import { ChatService, Message } from '../chat.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/scan';
+import { HelpService } from '../help.service';
+import { HelpSection } from '../help.section';
 
 @Component({
   selector: 'chat-dialog',
@@ -13,16 +15,18 @@ export class ChatDialogComponent implements OnInit, AfterViewChecked {
   messages: Observable<Message[]>;
   formValue: string;
   messagesCount: number;
+  helpSections: HelpSection[];
   
 
 
-  constructor(private chat: ChatService) {
+  constructor(private chat: ChatService, private help: HelpService) {
     
   }
 
   ngOnInit() {
     this.messages = this.chat.conversation.asObservable()
       .scan((acc, val) => acc.concat(val));
+    this.helpSections = this.help.helpSections;
   }
 
   sendMessage() {

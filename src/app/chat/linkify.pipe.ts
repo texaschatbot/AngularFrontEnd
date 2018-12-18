@@ -9,10 +9,11 @@ export class LinkifyPipe implements PipeTransform {
   constructor(private _domSanitizer: DomSanitizer) {}
 
   transform(value: any, args?: any): any {
-    return this._domSanitizer.bypassSecurityTrustHtml(this.stylize(value));
+
+    return this._domSanitizer.bypassSecurityTrustHtml(this.stylize(value, args));
   }
 
-  private stylize(text: string): string {
+  private stylize(text: string, id : string): string {
     let stylizedText: string = '';
     if (text && text.length > 0) {
 
@@ -29,6 +30,13 @@ export class LinkifyPipe implements PipeTransform {
         else
           stylizedText += t + " ";
       }
+
+      //if (stylizedText.length > 200) {
+      //  stylizedText = stylizedText.substr(0, 200) + `<span id="` + id + "_dots" + `" >...</span><span id="` + id + `_more">` + stylizedText.substr(200) + `</span>`;
+     //   stylizedText = stylizedText + `<button onclick="myFunction('` + id + "_dots', '" + id + "_more', '" + id + `_myBtn')" ` + `id = "` + id + `_myBtn"` + `> Read more </button>`;
+     // }
+
+
       return stylizedText;
     }
     else return text;

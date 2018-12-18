@@ -15,8 +15,17 @@
          fxFlex.lt-sm="100%"></card2>
 </div>
     -->
+
+<script>
+  
+  angular
+    .module('ChatModule', ['luegg.directives', 'ngSanitize']);
+
+  
+</script>
+
 <div class="d-flex flex-column">
-  <div class="p-2 bg-secondary text-white">
+  <div class="p-2 header-footer-color text-white">
     <div style="width: 50%; float:left;">
       <div style="font-weight: bold;"><h1>TeXA</h1></div>
       <div><h4>Texas Assistant</h4></div>
@@ -26,13 +35,49 @@
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <p style="font-weight: bold;">Texas Child Support System handles 1 million cases every year.</p>
+            <p style="font-weight: bold;">Child support program was started In 1975 by name "The Child Support Enforcement and Paternity Establishment Program (CSE)" in USA.</p>
           </div>
           <div class="carousel-item">
-            <p style="font-weight: bold;">Texas Child Support System has supported half 2 million childs.</p>
+            <p style="font-weight: bold;">Maximum amount of child support comes from employers.</p>
           </div>
           <div class="carousel-item">
-            <p style="font-weight: bold;">Texas Child Support System is biggest one in US.</p>
+            <p style="font-weight: bold;">TANF program is a support service which uses state funds to provide cash assistance to Texas families.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">QUICK is the online portal to view data of different state's child support.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">More than 10 Million cases were active in USA by Dec 2016.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">Never Assistance cases were most in USA in 2016.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">CSENET system is being used for interstate file transfer.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">Medicaid is a program jointly funded by the states and the federal government that reimburses hospitals and physicians for providing medical care to qualifying people.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">In USA, Texas state has most revenue in child support.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">About two-thirds of child support collections come from withholding income by employers.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">CSD work with the families and friends of incarcerated parent so they can act as liaisons between the Child Support Division and the parent.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">CSD Help Establishing Responsive Orders and Ensuring Support (HEROES) for Children in Military Families program.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">The Texas OAG and TWC developed links between the IV-D courts, OAG’s child support efforts, and local workforce boards to implement a model employment program (NCP Choices) for unemployed NCPs.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">The Texas Non-Custodial Parent (NCP) Choices is not a huge program —more than 10,000 parents have gone through it since it began in 2005, it is one of several innovative approaches that have boosted Texas into first place in the nation in child support collections.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">The Child Support Review Process (CSRP) is an in-office administrative process to establish, modify, or enforce child,medical and dental support obligations and determine paternity.</p>
           </div>
         </div>
       </div>
@@ -50,17 +95,19 @@
                 'to' : message.sentBy === 'You'}">
             <span>{{message.sentBy}}</span>
             <br>
-            <div [innerHTML]="message.contant  | linkify"></div>
+            <div [innerHTML]="message.contant  | linkify: 'message_value_' + i"></div>
 
             <ng-container *ngFor="let subMessage of message.subMessages">
               {{subMessage}} <br>
             </ng-container>
+            <div style="text-align:right"><p style="font-size:small;">{{message.showtime | date:'short'}}</p></div>
+
           </div>
         </ng-container>
       </div>
 
       <div class="input-group mb-3 footer">
-        <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text" style="width:45%;"
+        <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text" style="width:80%;"
                placeholder="Enter Your Message" aria-label="Enter Your Message" aria-describedby="button-addon2">
         <div class="input-group-append">
           <button (click)="sendMessage()" class="btn btn-primary bg-secondary"
@@ -75,6 +122,40 @@
     <div class="col-sm">
       <div class="accordion start-help scrollbar" style="overflow-x:hidden;" id="accordionExample">
         <div style="height:10px; background-color:white;"></div>
+
+        <!-- <ng-container *ngFor="let helpSection of helpSections">
+
+     <div class="card">
+       <div class="card-header" id="helpSection.headerId">
+         <h5 class="mb-0">
+           <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#helpSection.id" aria-expanded="false" aria-controls="collapseOne">
+             {{helpSection.label}}
+           </button>
+         </h5>
+       </div>
+
+       <div id="helpSection.id" class="collapse show" aria-labelledby="helpSection.headerId" data-parent="#accordionExample">
+         <div class="card-body">
+
+           <ng-container *ngFor="let intent of helpSections.intents">
+             {{intent}}
+             <button (click)="sendMessageFromLink(intent)" class="btn btn-link" type="button">
+               Send TeXA
+             </button>
+             <br><hr>
+           </ng-container>
+
+         </div>
+       </div>
+     </div>
+
+
+   </ng-container>--> 
+
+
+
+
+
         <div class="card">
           <div class="card-header" id="headingOne">
             <h5 class="mb-0">
@@ -92,14 +173,14 @@
               </button>
               <br><hr>
               Where will i get all developer guides?
-                  <button (click)="sendMessageFromLink('Where will i get all developer guides?')" class="btn btn-link" type="button">
-                    Send TeXA
-                  </button>
+              <button (click)="sendMessageFromLink('Where will i get all developer guides?')" class="btn btn-link" type="button">
+                Send TeXA
+              </button>
               <br><hr>
               How to begin with  batch development?
-                  <button (click)="sendMessageFromLink('How to begin with  batch development?')" class="btn btn-link" type="button">
-                    Send TeXA
-                  </button>
+              <button (click)="sendMessageFromLink('How to begin with  batch development?')" class="btn btn-link" type="button">
+                Send TeXA
+              </button>
             </div>
           </div>
         </div>
@@ -119,9 +200,9 @@
               </button>
               <br><hr>
               What should employer do if receives a wrong order?
-                  <button (click)="sendMessageFromLink('What should employer do if receives a wrong order?')" class="btn btn-link" type="button">
-                    Send TeXA
-                  </button>
+              <button (click)="sendMessageFromLink('What should employer do if receives a wrong order?')" class="btn btn-link" type="button">
+                Send TeXA
+              </button>
             </div>
           </div>
         </div>
@@ -159,9 +240,19 @@
               </button>
               <br><hr>
               What is the database schema detail for Predev1 database?
-                  <button (click)="sendMessageFromLink('What is the database schema detail for Predev1 database?')" class="btn btn-link" type="button">
-                    Send TeXA
-                  </button>
+              <button (click)="sendMessageFromLink('What is the database schema detail for Predev1 database?')" class="btn btn-link" type="button">
+                Send TeXA
+              </button>
+              <br><hr>
+              What are the CI_APPLICATION table details?
+              <button (click)="sendMessageFromLink('What are the CI_APPLICATION table details?')" class="btn btn-link" type="button">
+                Send TeXA
+              </button>
+              <br><hr>
+              What is master message 1?
+              <button (click)="sendMessageFromLink('What is master message 1?')" class="btn btn-link" type="button">
+                Send TeXA
+              </button>
             </div>
           </div>
         </div>
@@ -175,21 +266,18 @@
   </div>
 </div>
 
-<nav class="navbar navbar-fixed-bottom navbar-dark bg-secondary text-white">
+<nav class="navbar navbar-fixed-bottom navbar-dark header-footer-color text-white">
   <!-- Navbar content -->
 
   <div class="navbar-brand">Contact Us at - (800) 850-6442</div>
   <!--<div class="navbar-brand" href="#">Home <span class="sr-only">(current)</span></div>
     <div class="navbar-brand" href="#">Link</div>
     <div class="navbar-brand" href="#">Disabled</div> -->
+  
+</nav>
 
-  </nav>
 
-
-  <script>
-    angular
-      .module('ChatModule', ['luegg.directives', 'ngSanitize']);
-  </script>
+  
 
 
 
