@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { ApiAiClient } from 'api-ai-javascript/es6/ApiAiClient';
-
-import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-
-
 export class Message {
-  constructor(public contant: string, public sentBy: string, public subMessages?: String[]){
+  constructor(public contant: string, public sentBy: string,
+        public showtime: number, public subMessages?: String[]) {
   }
- }
+}
 
 
 @Injectable({
@@ -18,35 +15,40 @@ export class Message {
 })
 export class ChatService {
   
-
   readonly token = environment.dialogflow.angularBot;
-  readonly client = new ApiAiClient({accessToken: this.token});
-  
-  conversation = new BehaviorSubject<Message[]>([]);
+  readonly client = new ApiAiClient({ accessToken: this.token });
 
-  constructor() { }
+  conversation = new BehaviorSubject<Message[]>([]);
+  
+  constructor() {
+  }
 
   update(msg: Message) {
     this.conversation.next([msg]);
   }
 
-  converse(msg : string) {
-    const userMessage = new Message(msg, 'You');
+  converse(msg: string) {
+    const userMessage = new Message(msg, 'You', Date.now());
     this.update(userMessage);
 
     return this.client.textRequest(msg).then(res => {
       let speech = res.result.fulfillment.speech;
-      let subMessages: String[]
+      let subMessages: String[];
+      let showtime: number = Date.now();
       if (speech === '') {
 
         subMessages = []
-        for (let i = 0; i < res.result.fulfillment.messages.length; i++){
+        for (let i = 0; i < res.result.fulfillment.messages.length; i++) {
 
-          subMessages.push(res.result.fulfillment.messages[i].speech)
+          subMessages.push(res.result.fulfillment.messages[i].speech);
+          subMessages.push(res.result.fulfillment.messages[i].showtime);
+
         }
       }
-      const botMessage = new Message(speech, 'TeXA', subMessages);
+      const botMessage = new Message(speech, 'TeXA', Date.now(), subMessages);
       this.update(botMessage);
+
+
     });
   }
 }
