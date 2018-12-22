@@ -2,31 +2,31 @@ import { Component, OnInit, AfterViewChecked, ViewChild, ElementRef } from '@ang
 import { ChatService, Message } from '../chat.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/scan';
+import { HelpService } from '../help.service';
+import { HelpSection } from '../help.section';
 
 @Component({
-  selector: 'card1',
-  templateUrl: './card1.component.html',
-  styles: [`
-  :host {
-    display: block;
-    padding-left: 16px;
-    padding-right: 16px;
-    border: 0px solid black;
-    border-radius: 8px;
-  }
-  `]
+  selector: 'chatbox',
+  templateUrl: './chatbox.component.html',
+  styleUrls: ['./chatbox.component.css']
 })
-export class Card1Component implements OnInit, AfterViewChecked {
+export class ChatboxComponent implements OnInit, AfterViewChecked {
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
   messages: Observable<Message[]>;
   formValue: string;
   messagesCount: number;
+  helpSections: HelpSection[];
+  
 
-  constructor(private chat: ChatService) { }
+
+  constructor(private chat: ChatService, private help: HelpService) {
+    
+  }
 
   ngOnInit() {
     this.messages = this.chat.conversation.asObservable()
       .scan((acc, val) => acc.concat(val));
+    this.helpSections = this.help.helpSections;
   }
 
   sendMessage() {
