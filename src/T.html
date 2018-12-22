@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+</head>
+<body>
+<div class="d-flex flex-column">
+<div class="p-2 bg-secondary1 text-white">
+<div style="width:50%; float:left">
+<div style="font-weight:bold">
+<h2>TeXA</h2>
+</div>
+<div>
+<h4>Texas Assistant</h4>
+</div>
+</div>
+<div style="width:50%; float:right">
+<div id="carouselExampleControls" class="carousel slide">
+<div class="carousel-inner">
+<div class="carousel-item active">
+<p style="font-weight:bold">Texas Child Support System handles 1 million cases every year.</p>
+</div>
+<div class="carousel-item">
+<p style="font-weight:bold">Texas Child Support System has supported half 2 million childs.</p>
+</div>
+<div class="carousel-item">
+<p style="font-weight:bold">Texas Child Support System is biggest one in US.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row p-2">
+<div class="col-sm">
+<div class="footer-chat scrollbar chat-background" id="style-2"><button id="myBtnBottom" title="Go to Bottom" class="arrowDown">
+</button>
+<div class="message bubble"><span style="color:cadetblue; font-weight:bold">{{message.sentBy}}</span>
+<br>
+<div></div>
+<div></div>
+{{subMessage}}<br>
+<div style="text-align:right">
+<p style="font-size:small">{{message.showtime | date:'MMM d, y h:mm:ss a'}}</p>
+</div>
+</div>
+<div><button id="myBtnTop" title="Go to Top" class="arrowUp"></button> </div>
+</div>
+<div class="input-group mb-3 footer"><input type="text" aria-label="Enter Your Message" aria-describedby="button-addon2" style="width:45%">
+<div class="input-group-append"><button class="btn btn-primary send-style" type="button" id="button-addon2" style="border-color:aliceblue!important">
+Ask Texa</button> </div>
+</div>
+</div>
+<div class="col-sm">
+<div class="accordion start-help scrollbar" id="accordionExample" style="overflow-x:hidden">
+<div class="accordion" style="height:10px"></div>
+<div class="card accordion">
+<div class="card-header accordion" id="headingOne">
+<div class="card accordion">
+<div id="helpSection.headerId">
+<h5 class="mb-0 accordion">&nbsp; <a href="#helpSection{{helpSection.id}}" class=" faq-fontcolor div-main">
+{{helpSection.label}}</a> </h5>
+</div>
+<div id="helpSection{{helpSection.id}}" class="collapse faq-fontcolor" aria-labelledby="helpSection.headerId">
+<div class="card-body link-font">
+<ul>
+<li class="angle-right">{{intent}}<button class="btn btn-link" type="button">Ask Texa
+</button>
+<hr>
+</li></ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="navbar-brand contactus-style">Contact Us at - (800) 850-6442 </div>
+</div>
+</body>
+</html>

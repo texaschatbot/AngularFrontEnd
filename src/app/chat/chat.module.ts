@@ -3,29 +3,28 @@ import { CommonModule } from '@angular/common';
 import { ChatDialogComponent } from './chat-dialog/chat-dialog.component';
 import { ChatService } from './chat.service';
 import { FormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { LinkifyPipe } from './linkify.pipe';
 
 import { RouterModule } from '@angular/router';
-import { CardComponent } from './card/card.component';
-import { Card1Component } from './card1/card1.component';
-import { Card2Component } from './card2/card2.component';
 import { ReadMoreComponent } from './read-more/read.more.component';
 import { HelpService } from './help.service';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { ChatboxComponent } from './chatbox/chatbox.component';
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    FlexLayoutModule,
     RouterModule.forRoot([])
   ],
-  declarations: [ChatDialogComponent, LinkifyPipe, CardComponent, Card1Component, Card2Component, ReadMoreComponent],
+  declarations: [ChatDialogComponent, 
+                LinkifyPipe, ReadMoreComponent, FooterComponent, 
+                HeaderComponent, ChatboxComponent, HelpComponent],
   exports: [ChatDialogComponent],
-  providers: [ChatService, Card2Component, Card1Component, HelpService]
+  providers: [ChatService, HelpService, ChatboxComponent],
 })
 export class ChatModule {
-
-  
 }
