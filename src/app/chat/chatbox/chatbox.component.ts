@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/scan';
 import { HelpService } from '../help.service';
 import { HelpSection } from '../help.section';
+import { VoteService } from '../vote.service';
 
 @Component({
   selector: 'chatbox',
@@ -19,7 +20,7 @@ export class ChatboxComponent implements OnInit, AfterViewChecked {
   
 
 
-  constructor(private chat: ChatService, private help: HelpService) {
+  constructor(private chat: ChatService, private help: HelpService, private vote: VoteService) {
     
   }
 
@@ -32,6 +33,9 @@ export class ChatboxComponent implements OnInit, AfterViewChecked {
   sendMessage() {
     if (this.formValue.trim() !== '') {
       this.chat.converse(this.formValue);
+
+      //Update Total Message Count
+      this.vote.incrementTotalCount();
     }
 
     this.formValue = '';
