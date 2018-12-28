@@ -23,6 +23,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { VoteComponent } from './vote/vote.component';
 import { VoteService } from './vote.service';
 
+
 @NgModule({
   imports: [
     CommonModule,

@@ -11,6 +11,12 @@
         <ng-container *ngFor="let subMessage of message.subMessages">
           {{subMessage}} <br>
         </ng-container>
+
+        <div *ngIf="message.sentBy === 'TeXA'">
+          <vote></vote>
+        </div>
+
+
         <div style="text-align:right">
           <p style="font-size:small;">{{message.showtime | date:'short'}}</p>
         </div>
