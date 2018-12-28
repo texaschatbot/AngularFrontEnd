@@ -2,3 +2,10 @@
 <button class="btn btn-link fas fa-thumbs-up" (click)="upVote()"></button>
 <button class="btn btn-link fas fa-thumbs-down" (click)="downVote()"></button>
 </div>
+
+<div *ngIf="showloader" class="alert alert-primary" role="alert">
+  Thanks for your feedback.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
