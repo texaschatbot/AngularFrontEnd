@@ -8,13 +8,17 @@ import { VoteService } from '../vote.service';
 })
 export class VoteComponent {
 
+  isVoted : boolean = false;
+
   constructor(private voteService: VoteService) { }
 
   upVote(){
+    this.isVoted = true;
     this.voteService.upVote();
   }
 
   downVote(){
+    this.isVoted = true;
     this.voteService.downVote();
   }
 }

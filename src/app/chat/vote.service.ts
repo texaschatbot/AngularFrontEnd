@@ -15,36 +15,34 @@ export class VoteService {
   }
 
   upVote(){
-    this.changeDocument('upVote');
+    this.feedbackCollection.doc(`count`).ref.get().then((doc) => {
+      var currentValue = doc.data().upVote;
+      currentValue = currentValue  +1;
+      let a = {};
+      a['upVote']= currentValue;
+    this.feedbackCollection.doc(`count`).update(a);
+    });
   }
 
   downVote() {
-    this.changeDocument('downVote');
+    this.feedbackCollection.doc(`count`).ref.get().then((doc) => {
+      var currentValue = doc.data().downVote;
+      currentValue = currentValue  +1;
+      let a = {};
+      a['downVote']= currentValue;
+    this.feedbackCollection.doc(`count`).update(a);
+    });
   }
 
   incrementTotalCount(){
-    this.changeDocument('total');
+ 
+      this.feedbackCollection.doc(`count`).ref.get().then((doc) => {
+        var currentValue = doc.data().total;
+        currentValue = currentValue  +1;
+        let a = {};
+        a['total']= currentValue;
+      this.feedbackCollection.doc(`count`).update(a);
+      });
   }
 
-  private changeDocument(property: string){
-
-    let currentValue = 0;
-
-    this.feedbackCollection.doc(`count`).ref.get().then((doc) => {
-      currentValue = doc.data().upVote;
-    });
-    currentValue = currentValue  +1;
-
-    let updateObj = {};
-
-    if(property==='upVote') {
-      updateObj ={upVote:currentValue};
-    } else if(property==='downVote'){
-      updateObj ={downVote:currentValue};
-    } else if(property==='total') {
-      updateObj ={total:currentValue};
-    }
-
-    this.feedbackCollection.doc(`count`).update(updateObj);
-  }
 }

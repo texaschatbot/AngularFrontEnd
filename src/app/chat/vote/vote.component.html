@@ -1,2 +1,4 @@
-<button (click)="upVote()">Vote Up</button>
-<button (click)="downVote()">Vote Down</button>
+<div *ngIf="!isVoted">
+<button class="btn btn-link fas fa-thumbs-up" (click)="upVote()"></button>
+<button class="btn btn-link fas fa-thumbs-down" (click)="downVote()"></button>
+</div>

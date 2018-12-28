@@ -4,6 +4,7 @@ import { ApiAiClient } from 'api-ai-javascript/es6/ApiAiClient';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 export class Message {
+
   constructor(public contant: string, public sentBy: string,
         public showtime: number, public subMessages?: String[]) {
   }
