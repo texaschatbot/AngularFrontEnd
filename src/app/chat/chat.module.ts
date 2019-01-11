@@ -16,6 +16,12 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { VoteComponent } from './vote/vote.component';
 import { VoteService } from './vote.service';
+import { ChatboxComponent } from './chatbox/chatbox.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { HelpComponent } from './help/help.component';
+import { ReadMoreComponent } from './read-more/read.more.component';
 
 
 @NgModule({
@@ -28,7 +34,9 @@ import { VoteService } from './vote.service';
     AngularFireAuthModule,
     AngularFirestoreModule
   ],
-  declarations: [ChatDialogComponent,
+  declarations: [ChatDialogComponent, ChatboxComponent,
+    FeedbackComponent, FooterComponent, HeaderComponent,
+    HelpComponent, ReadMoreComponent,
     LinkifyPipe, VoteComponent],
   exports: [ChatDialogComponent],
   providers: [ChatService, VoteService],

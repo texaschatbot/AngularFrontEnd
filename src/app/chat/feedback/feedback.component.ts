@@ -8,6 +8,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class FeedbackComponent {
   @Output() hidePopup = new EventEmitter();
   isDisplayPopUp: boolean = true;
+  formValue: any;
 
   hideFeedBackForm() {
     this.isDisplayPopUp = false;

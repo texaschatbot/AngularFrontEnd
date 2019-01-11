@@ -30,6 +30,11 @@ export class ChatDialogComponent implements OnInit, AfterViewChecked {
   ratingResponse: number;
   ratingAll: number;
   isOpen: boolean;
+  inputName: any;
+  inputName1: any;
+  inputName2: any;
+
+
   constructor(private chat: ChatService, private help: HelpService, private voteService: VoteService) {
   }
 
