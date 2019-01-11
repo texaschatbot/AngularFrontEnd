@@ -6,16 +6,11 @@ import { HelpService } from '../help.service';
 import { HelpSection } from '../help.section';
 import { VoteService } from '../vote.service';
 
-
-
 @Component({
   selector: 'chat-dialog',
   templateUrl: './chat-dialog.component.html',
   styleUrls: ['./chat-dialog.component.css']
 })
-
-
-
 export class ChatDialogComponent implements OnInit, AfterViewChecked {
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
   @ViewChild('feedback') myInputVariable: ElementRef;
@@ -70,6 +65,7 @@ export class ChatDialogComponent implements OnInit, AfterViewChecked {
 
     if (this.formValue.trim() !== '') {
       this.chat.converse(this.formValue);
+      this.voteService.incrementTotalCount();
     }
     this.formValue = '';
   }
@@ -134,12 +130,4 @@ export class ChatDialogComponent implements OnInit, AfterViewChecked {
     this.ratingResponse = null;
     this.ratingAll = null;
   }
-
-
 }
-
-
-
-
-
-
