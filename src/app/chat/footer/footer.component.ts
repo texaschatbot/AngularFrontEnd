@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'footer',
@@ -6,4 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
+
+  @Output() displayPopup = new EventEmitter();
+  isDisplayPopUp : boolean = false;
+
+  showFeedBackForm() {
+    this.isDisplayPopUp = true;
+    this.displayPopup.emit(this.isDisplayPopUp);
+  }
 }

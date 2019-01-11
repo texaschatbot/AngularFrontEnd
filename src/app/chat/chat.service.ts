@@ -1,13 +1,25 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { ApiAiClient } from 'api-ai-javascript/es6/ApiAiClient';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Timestamp } from 'rxjs';
+
+
 
 export class Message {
-
-  constructor(public contant: string, public sentBy: string,
-        public showtime: number, public subMessages?: String[]) {
+  constructor(public contant: string, public sentBy: string, public showtime: number, public subMessages?: String[]) {
   }
+}
+
+export class User {
+  constructor(
+    public id: string,
+    public name: string,
+    public username: string,
+    public email: string
+  ) { }
 }
 
 
@@ -15,13 +27,15 @@ export class Message {
   providedIn: 'root'
 })
 export class ChatService {
-  
+
   readonly token = environment.dialogflow.angularBot;
   readonly client = new ApiAiClient({ accessToken: this.token });
 
   conversation = new BehaviorSubject<Message[]>([]);
-  
+
   constructor() {
+
+
   }
 
   update(msg: Message) {
@@ -52,4 +66,8 @@ export class ChatService {
 
     });
   }
+
+
+
+
 }

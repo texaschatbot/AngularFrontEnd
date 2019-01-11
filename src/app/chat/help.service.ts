@@ -36,9 +36,28 @@ export class HelpService {
         , "Explain the responsibilities of being an employer on terminations"
         , "Please guide me through the online steps for reporting terminations"]));
 
+    this._helpSections.push(new HelpSection("MedicalSupport", "MS", "Medical Support",
+      ["Where should I can contact for medical related queries?"
+        , "In what health insurance coverage is an employer required to enroll the child(ren)?"
+        , "Is it mandatory to have employers name registered in NMSN?"]));
+
+    this._helpSections.push(new HelpSection("OAGEmployer", "OAGEMP", "OAG Employer",
+      ["What is FEIN?"
+        , "Can I use that person's user ID and password of the person who has left the company for online reporting"
+        , "I got an email that my company cannot be validated, what shall I do next to get it validated ?"]));
+
+    this._helpSections.push(new HelpSection("ChildSupport", "CS", "Child Support",
+      ["Who is eligible for Child Support Services?"
+        , "Who can be Custodial Parent?"
+        , "What if child is in foster care, is he eligible for child support?"]));
+
   }
-  
+
+
+
   get helpSections() {
+
+
     return this._helpSections;
   }
 

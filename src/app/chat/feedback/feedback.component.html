@@ -1,0 +1,12 @@
+<div class="form-popup" id="myForm">
+  <div class="form-container">
+    <h1>Feedback</h1>
+
+    <textarea [(ngModel)]="formValue" type="text" style="width:100%; max-height:70%" placeholder="Enter Your Comment"
+           aria-label="Enter Your Message" aria-describedby="button-addon2">
+</textarea>
+
+    <button class="btn" (click)="submitComment()">Submit</button>
+    <button class="btn cancel" (click)="hideFeedBackForm()">Cancel</button>
+  </div>
+</div>

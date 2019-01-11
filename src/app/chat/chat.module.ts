@@ -9,12 +9,6 @@ import { environment } from './../../environments/environment';
 import { LinkifyPipe } from './linkify.pipe';
 
 import { RouterModule } from '@angular/router';
-import { ReadMoreComponent } from './read-more/read.more.component';
-import { HelpService } from './help.service';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { ChatboxComponent } from './chatbox/chatbox.component';
-import { HelpComponent } from './help/help.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -34,11 +28,11 @@ import { VoteService } from './vote.service';
     AngularFireAuthModule,
     AngularFirestoreModule
   ],
-  declarations: [ChatDialogComponent, 
-                LinkifyPipe, ReadMoreComponent, FooterComponent, 
-                HeaderComponent, ChatboxComponent, HelpComponent, VoteComponent],
+  declarations: [ChatDialogComponent,
+    LinkifyPipe, VoteComponent],
   exports: [ChatDialogComponent],
-  providers: [ChatService, HelpService, VoteService, ChatboxComponent],
+  providers: [ChatService, VoteService],
 })
 export class ChatModule {
 }
+

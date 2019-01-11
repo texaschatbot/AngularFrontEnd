@@ -1,23 +1,294 @@
+
+<div class="d-flex flex-column" [ngClass]="{'blur': display=='block' || display1=='block'}">
+  <div class="p-2 bg-secondary1 text-white">
+    <div style="width: 50%; float:left;">
+      <div style="font-weight: bold;">
+        <h1>TeXA</h1>
+      </div>
+      <div>
+        <h4>Texas Assistant</h4>
+      </div>
+    </div>
+
+    <div style="width: 50%; float:right;">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <p style="font-weight: bold;">
+              Child support program was started In 1975 by name "The Child Support
+              Enforcement and Paternity Establishment Program (CSE)" in USA.
+            </p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">Maximum amount of child support comes from employers.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">
+              TANF program is a support service which uses state funds to provide cash
+              assistance to Texas families.
+            </p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">QUICK is the online portal to view data of different state's child support.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">More than 10 Million cases were active in USA by Dec 2016.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">Never Assistance cases were most in USA in 2016.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">CSENET system is being used for interstate file transfer.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">
+              Medicaid is a program jointly funded by the states and the federal government
+              that reimburses hospitals and physicians for providing medical care to qualifying people.
+            </p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">In USA, Texas state has most revenue in child support.</p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">
+              About two-thirds of child support collections come from withholding income by
+              employers.
+            </p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">
+              CSD work with the families and friends of incarcerated parent so they can act
+              as liaisons between the Child Support Division and the parent.
+            </p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">
+              CSD Help Establishing Responsive Orders and Ensuring Support (HEROES) for
+              Children in Military Families program.
+            </p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">
+              The Texas OAG and TWC developed links between the IV-D courts, OAG’s child
+              support efforts, and local workforce boards to implement a model employment program (NCP Choices) for
+              unemployed NCPs.
+            </p>
+          </div>
+          <div class="carousel-item">
+            <p style="font-weight: bold;">
+              The Child Support Review Process (CSRP) is an in-office administrative
+              process to establish, modify, or enforce child,medical and dental support obligations and determine
+              paternity.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row p-2">
+    <div class="col-sm">
+      <div class="footer-chat scrollbar chat-background" id="style-2" #scrollMe>
+
+        <ng-container *ngFor="let message of messages | async; let i = index; last as isLast">
+          <div class="message bubble"
+               [ngClass]="{'from me' : message.sentBy === 'TeXA',
+                'to you' : message.sentBy === 'You'}">
+            <span style="color:darkcyan; font-weight:bold">{{message.sentBy}}</span>
+            <br>
+            <div [innerHTML]="message.contant  | linkify"> </div>
+            <ng-container *ngFor="let subMessage of message.subMessages">
+              {{subMessage}}<br>
+            </ng-container>
+            <div *ngIf="message.sentBy === 'TeXA'">
+              <vote></vote>
+            </div>
+            <div style="text-align:right"><p style="font-size:small;">{{message.showtime | date:'MMM d, y h:mm:ss a'}}</p></div>
+          </div>
+
+        </ng-container>
+
+
+
+
+      </div>
+      <div class="input-group mb-3 footer">
+        <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text" style="width:80%;"
+               placeholder="Enter Your Message" aria-label="Enter Your Message" aria-describedby="button-addon2">
+
+        <div class="input-group-append">
+          <button (click)="sendMessage()" class="btn send-style" value=""
+                  type="button" id="button-addon2"></button>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-sm">
+      <div class="accordion-image start-help scrollbar" style="overflow-x:hidden;" id="accordionExample">
+        <div style="height:10px;"></div>
+        <div class="card-new">
+          <div class="card-header" id="headingOne">
+            <ng-container *ngFor="let helpSection of helpSections">
+              <div class="card-new">
+                <div id="helpSection.headerId">
+                  <h5>
+                    &nbsp;
+                    <a data-toggle="collapse" href="#helpSection{{helpSection.id}}" class=" faq-fontcolor div-main"> {{helpSection.label}}</a>
+                  </h5>
+                </div>
+
+                <div id="helpSection{{helpSection.id}}" class="collapse faq-fontcolor" aria-labelledby="helpSection.headerId" data-parent="#accordionExample">
+                  <div class="card-body link-font">
+                    <ul>
+                      <li *ngFor="let intent of helpSection.intents" class="angle-right">
+                        {{intent}}
+                        <button (click)="sendMessageFromLink(intent)" class="btn btn-link" type="button">
+                          Ask Texa
+                        </button>
+                        <hr>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-fixed-bottom navbar-dark bg-secondary1 text-white">
+  <!-- Navbar content -->
+  <div class="navbar-brand fas fa-phone-square" [ngClass]="{'blur': display=='block' || display1=='block'}">
+    Contact Us at - (800) 850-6442
+  </div>
+
+  <button type="button" class="far fa-comments" (click)="openModalDialog()" id="feedbackButton" [ngClass]="{'blur': display=='block' || display1=='block'}"> Feedback</button>
+  <div class="backdrop" [ngStyle]="{'display':display}"></div>
+</nav>
+
+<!-- Pop Up-->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}" id="feedbackModal">
+  <!-- modal-dialog -->
+  <div class="modal-dialog" role="document">
+    <!-- modal-content -->
+    <div class="modal-content">
+      <!-- modal-header -->
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="closeModalDialog()"><span aria-hidden="true">&times;</span></button>
+
+      </div>
+
+      <!-- modal-body -->
+      <div class="modal-body" style="overflow-y: scroll;">
+
+        <h2 class="modal-title">Feedback</h2>
+        <p style="color:black; text-align:center">Please share your comments/feedback here.</p>
+        <div class="form-group">
+          <form id="feedback_form">
+            <textarea class="form-control" id="feedback_txt" placeholder="Type your comments/feedback." rows="7" [ngModel]="feedback" #feedback onfocus="this.value=''"></textarea>
+            <input class="form-control" id="hdn_EnterpriseId" type="hidden" value="">
+            <br />
+            <br />
+            <p style="color:black; font-weight:bold;text-align:center">How would you rate the UI</p>
+            <fieldset class="rating" id="ratingStars">
+              <input type="radio" [name]="inputName" value="5" [checked]="rating===5" />
+              <label (click)='onClick(5)'>5 stars</label>
+
+              <input type="radio" [name]="inputName" value="4" [checked]="rating===4" />
+              <label (click)='onClick(4)'>4 stars</label>
+
+              <input type="radio" [name]="inputName" value="3" [checked]="rating===3" />
+              <label (click)='onClick(3)'>3 stars</label>
+
+              <input type="radio" [name]="inputName" value="2" [checked]="rating===2" />
+              <label (click)='onClick(2)'>2 stars</label>
+
+              <input type="radio" [name]="inputName" value="1" [checked]="rating===1" />
+              <label (click)='onClick(1)'>1 star</label>
+            </fieldset>
+            <br />
+            <br />
+            <p style="color:black; font-weight:bold;">How would you rate the Responses</p>
+            <fieldset class="rating" id="ratingResponses">
+              <input type="radio" [name]="inputName1" value="5" [checked]="ratingResponse===5" />
+              <label (click)='onClick1(5)'>5 stars</label>
+
+              <input type="radio" [name]="inputName1" value="4" [checked]="ratingResponse===4" />
+              <label (click)='onClick1(4)'>4 stars</label>
+
+              <input type="radio" [name]="inputName1" value="3" [checked]="ratingResponse===3" />
+              <label (click)='onClick1(3)'>3 stars</label>
+
+              <input type="radio" [name]="inputName1" value="2" [checked]="ratingResponse===2" />
+              <label (click)='onClick1(2)'>2 stars</label>
+
+              <input type="radio" [name]="inputName1" value="1" [checked]="ratingResponse===1" />
+              <label (click)='onClick1(1)'>1 star</label>
+            </fieldset>
+
+            <br />
+            <br />
+            <p style="color:black; font-weight:bold;">Overall Experience</p>
+            <fieldset class="rating" id="ratingOverAll">
+              <input type="radio" [name]="inputName2" value="5" [checked]="ratingAll===5" />
+              <label (click)='onClick2(5)'>5 stars</label>
+
+              <input type="radio" [name]="inputName2" value="4" [checked]="ratingAll===4" />
+              <label (click)='onClick2(4)'>4 stars</label>
+
+              <input type="radio" [name]="inputName2" value="3" [checked]="ratingAll===3" />
+              <label (click)='onClick2(3)'>3 stars</label>
+
+              <input type="radio" [name]="inputName2" value="2" [checked]="ratingAll===2" />
+              <label (click)='onClick2(2)'>2 stars</label>
+
+              <input type="radio" [name]="inputName2" value="1" [checked]="ratingAll===1" />
+              <label (click)='onClick2(1)'>1 star</label>
+            </fieldset>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" [disabled]="check(feedback.value)" id="feedback_button" aria-label="Close" (click)="postComments(feedback.value)" type="button" data-toggle="modal" data-target="successmessage" data-dismiss="modal">Post</button>
+        </div>
+      </div>
+      <!-- modal-footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="closeModalDialog()">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="improve_feedback_popup">
+  <div tabindex="-1" class="modal" role="dialog" [ngStyle]="{'display':display1}" id="successmessage">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" aria-label="Close" (click)="closeModalDialog()"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <div class="exit_formalities">
+            <h6>Thank you</h6>
+            <div class="alert alert-success" id="showSuccessMessage">
+              Feedback submitted successfully.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   angular
     .module('ChatModule', ['luegg.directives', 'ngSanitize']);
 </script>
 
-<div class="d-flex flex-column">
-  <!-- Header -->
-  <div class="p-2 header-footer-color text-white">
-    <header></header>
-  </div>
-  <div class="row p-2">
-    <div class="col-sm">
-      <!-- Chat Box -->
-      <chatbox></chatbox>
-    </div>
-    <div class="col-sm">
-      <!-- Help -->
-    <help></help>
-    </div>
-  </div>
-  <!-- Fooster -->
-  <footer></footer>
-</div>
+
+
+
