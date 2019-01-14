@@ -1,12 +1,118 @@
-<div class="form-popup" id="myForm">
-  <div class="form-container">
-    <h1>Feedback</h1>
 
-    <textarea [(ngModel)]="formValue" type="text" style="width:100%; max-height:70%" placeholder="Enter Your Comment"
-           aria-label="Enter Your Message" aria-describedby="button-addon2">
-</textarea>
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':feedbackSection.display}" id="feedbackModal">
+    <!-- modal-dialog -->
+    <div class="modal-dialog" role="document">
+      <!-- modal-content -->
+      <div class="modal-content">
+        <!-- modal-header -->
+        <div class="modal-header">
+          <button type="button" class="close" aria-label="Close" (click)="closeModalDialog()"><span aria-hidden="true">&times;</span></button>
 
-    <button class="btn" (click)="submitComment()">Submit</button>
-    <button class="btn cancel" (click)="hideFeedBackForm()">Cancel</button>
+        </div>
+
+        <!-- modal-body -->
+        <div class="modal-body">
+
+          <h2 class="modal-title">Feedback</h2>
+          <p style="color:black; text-align:center">Please share your comments/feedback here.</p>
+          <div class="form-group">
+            <form id="feedback_form">
+              <textarea class="form-control" id="feedback_txt" placeholder="Type your comments/feedback." rows="7" [(ngModel)]="formValue" name="formValue"  onfocus="this.value=''"></textarea>
+              <input class="form-control" id="hdn_EnterpriseId" type="hidden" value="">
+              <br />
+              <br />
+              <p style="color:black; font-weight:bold;text-align:center">How would you rate the UI</p>
+              <fieldset class="rating" id="ratingStars">
+                <input type="radio" value="5" [checked]="rating===5" />
+                <label (click)='onClick(5)'>5 stars</label>
+
+                <input type="radio" value="4" [checked]="rating===4" />
+                <label (click)='onClick(4)'>4 stars</label>
+
+                <input type="radio" value="3" [checked]="rating===3" />
+                <label (click)='onClick(3)'>3 stars</label>
+
+                <input type="radio" value="2" [checked]="rating===2" />
+                <label (click)='onClick(2)'>2 stars</label>
+
+                <input type="radio" value="1" [checked]="rating===1" />
+                <label (click)='onClick(1)'>1 star</label>
+              </fieldset>
+              <br />
+              <br />
+              <p style="color:black; font-weight:bold;">How would you rate the Responses</p>
+              <fieldset class="rating" id="ratingResponses">
+                <input type="radio" value="5" [checked]="ratingResponse===5" />
+                <label (click)='onClick1(5)'>5 stars</label>
+
+                <input type="radio" value="4" [checked]="ratingResponse===4" />
+                <label (click)='onClick1(4)'>4 stars</label>
+
+                <input type="radio" value="3" [checked]="ratingResponse===3" />
+                <label (click)='onClick1(3)'>3 stars</label>
+
+                <input type="radio" value="2" [checked]="ratingResponse===2" />
+                <label (click)='onClick1(2)'>2 stars</label>
+
+                <input type="radio" value="1" [checked]="ratingResponse===1" />
+                <label (click)='onClick1(1)'>1 star</label>
+              </fieldset>
+
+              <br />
+              <br />
+              <p style="color:black; font-weight:bold;">Overall Experience</p>
+              <fieldset class="rating" id="ratingOverAll">
+                <input type="radio" value="5" [checked]="ratingAll===5" />
+                <label (click)='onClick2(5)'>5 stars</label>
+
+                <input type="radio" value="4" [checked]="ratingAll===4" />
+                <label (click)='onClick2(4)'>4 stars</label>
+
+                <input type="radio" value="3" [checked]="ratingAll===3" />
+                <label (click)='onClick2(3)'>3 stars</label>
+
+                <input type="radio" value="2" [checked]="ratingAll===2" />
+                <label (click)='onClick2(2)'>2 stars</label>
+
+                <input type="radio" value="1" [checked]="ratingAll===1" />
+                <label (click)='onClick2(1)'>1 star</label>
+              </fieldset>
+
+            </form>
+          </div>
+          <br />
+          <div class="modal-footer">
+            <button class="btn btn-primary" [disabled]="check()" id="feedback_button" aria-label="Close" (click)="postComments()" type="button" data-toggle="modal" data-target="successmessage" data-dismiss="modal">Post</button>
+          </div>
+        </div>
+        <!-- modal-footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="closeModalDialog()">Close</button>
+        </div>
+
+      </div>
+    </div>
   </div>
-</div>
+
+
+
+  <div class="improve_feedback_popup">
+    <div tabindex="-1" class="modal" role="dialog" [ngStyle]="{'display':display1}" id="successmessage">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" aria-label="Close" (click)="closeModalDialog()"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="exit_formalities">
+              <h6>Thank you</h6>
+              <div class="alert alert-success" id="showSuccessMessage">
+                Feedback submitted successfully.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

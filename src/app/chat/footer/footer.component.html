@@ -1,7 +1,11 @@
 
 
-<nav class="navbar navbar-fixed-bottom navbar-dark header-footer-color text-white">
-  <div class="navbar-brand">Contact Us at - (800) 850-6442</div>
-  <button class="btn btn-link fas fa-comments" (click)="showFeedBackForm()"> Feedback</button>
+<nav class="navbar navbar-fixed-bottom navbar-dark bg-secondary1 text-white">
+  <div class="navbar-brand fas fa-phone-square" [ngClass]="{'blur': display=='block' || display1=='block'}">
+    Contact Us at - (800) 850-6442
+  </div>
+  <button class="far fa-comments" (click)="showFeedBackForm()" id="feedbackButton" [ngClass]="{'blur': display=='block' || display1=='block'}"> Feedback</button>
+  <div class="backdrop" [ngStyle]="{'display':display}"></div>
 </nav>
+
 

@@ -50,13 +50,13 @@ export class VoteService {
 
   postComments(feedback, ratingUI, ratingAll, ratingResponse) {
     this.feedbackCollection.doc(`detailFeedback`).ref.get().then((doc) => {
-      let a = {};
-      a['date'] = new Date();
-      a['comments'] = feedback;
-      a['ratingUI'] = ratingUI;
-      a['ratingResponse'] = ratingResponse;
-      a['ratingAll'] = ratingAll;
-      this.feedbackCollection.doc(`detailFeedback`).collection('UserFeedback').add(a);
+      let feedbackDetail = {};
+      feedbackDetail['date'] = new Date();
+      feedbackDetail['comments'] = feedback;
+      feedbackDetail['ratingUI'] = ratingUI;
+      feedbackDetail['ratingResponse'] = ratingResponse;
+      feedbackDetail['ratingAll'] = ratingAll;
+      this.feedbackCollection.doc(`detailFeedback`).collection('UserFeedback').add(feedbackDetail);
     });
   }
 

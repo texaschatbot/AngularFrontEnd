@@ -16,8 +16,6 @@ export class User {
     public email: string
   ) { }
 }
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -27,11 +25,6 @@ export class ChatService {
   readonly client = new ApiAiClient({ accessToken: this.token });
 
   conversation = new BehaviorSubject<Message[]>([]);
-
-  constructor() {
-
-
-  }
 
   update(msg: Message) {
     this.conversation.next([msg]);

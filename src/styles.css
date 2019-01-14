@@ -86,13 +86,11 @@ button {
     background-color: whitesmoke;
     color: #363636;
     margin-left: 100px;
-    font-weight: bold;
     text-align: right;
   }
 
   .message.from {
     background-color: #F2F2F2;
-    font-weight: bold;
     color: #363636;
     margin-right: 100px;
   }
@@ -160,13 +158,15 @@ button {
 .accordion-image {
   background-image: url("..\src\assets\images\acc2.jpg");
   background-repeat: no-repeat;
-  background-size: 600px 500px;
+  width: 100%;
+  background-size: contain;
 }
 
 .faq-fontcolor {
   font-size: small;
   font-weight: bold;
 }
+
 
 a {
   color: black;
@@ -177,7 +177,7 @@ a {
   }
 
 .btn:hover {
-  color: blue !important
+  color: blue !important;
 }
 
 .angle-right:before {
@@ -195,6 +195,7 @@ ul {
 .chat-background {
   background-image: url("..\src\assets\images\chatimage1.png");
   background-repeat: round;
+  background-size: contain;
 }
 
 .ex1:before {
@@ -218,7 +219,7 @@ ul {
 }
 
 .send-style {
-  width: 70px;
+  width: 60px;
   height: 40px;
   background-size: 60px 40px;
   background-position-x: center;
@@ -226,6 +227,7 @@ ul {
   background-image: url("..\src\assets\images\send1.png");
   background-repeat: no-repeat;
   background-color: lightslategray;
+  background-size: contain;
 }
 
 .fa-users {
@@ -350,6 +352,8 @@ ul {
   border: 1px solid rgba(0, 0, 0, .2);
   border-radius: 6px;
   outline: 0;
+  border-radius: 15px;
+  z-index: -1;
   -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
   box-shadow: 0px 3px 9px rgba(0,0,0,0.5);
 }
@@ -371,19 +375,25 @@ ul {
   text-align: center;
 }
 
+
+
 .modal {
-  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 1050;
-  display: none;
-  overflow: hidden;
   -webkit-overflow-scrolling: touch;
   outline: 0;
+  text-align: center;
+  padding: 0 !important;
 }
 
+#feedbackModal .modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
 
 
 .improve_feedback_popup .modal-header {
@@ -406,10 +416,30 @@ ul {
     font-weight: bold;
   }
 
-.modal-body {
-  position: relative;
-  padding: 15px;
+#feedbackModal .modal-body {
+  height: 550px;
+  width: 500px;
+  overflow: scroll;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .modal-body {
+    max-width: 400px;
+    overflow: scroll;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .modal-body {
+    max-width: 310px;
+    overflow: scroll;
+  }
+}
+
+
+
+
 
 
 .improve_feedback_popup .modal-footer {

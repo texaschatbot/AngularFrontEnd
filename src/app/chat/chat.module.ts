@@ -39,7 +39,7 @@ import { ReadMoreComponent } from './read-more/read.more.component';
     HelpComponent, ReadMoreComponent,
     LinkifyPipe, VoteComponent],
   exports: [ChatDialogComponent],
-  providers: [ChatService, VoteService],
+  providers: [ChatService, VoteService, ChatboxComponent, FeedbackComponent],
 })
 export class ChatModule {
 }

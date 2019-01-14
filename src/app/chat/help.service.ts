@@ -21,7 +21,6 @@ export class HelpService {
         , "What is the length of retention for support orders or records concerning withholding?"
         , "When the payment is submitted, does the employer need to identify the payment as a lump sum?"]));
 
-
     this._helpSections.push(new HelpSection("NewHireHeader", "NewHire", "New Hire",
       ["Can I report the employee's's ITIN number on the Texas State New Hire Report"
         , "What is considered to be the “date of hire”"
@@ -50,15 +49,9 @@ export class HelpService {
       ["Who is eligible for Child Support Services?"
         , "Who can be Custodial Parent?"
         , "What if child is in foster care, is he eligible for child support?"]));
-
   }
-
-
 
   get helpSections() {
-
-
     return this._helpSections;
   }
-
 }
