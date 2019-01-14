@@ -26,14 +26,12 @@ export class ChatDialogComponent {
 
 
   showPopup(isDisplayPopUp) {
-    this.isDisplayPopUp = isDisplayPopUp;
     ////////////
     document.getElementById('feedbackButton').style.display = "none";
     this.feedbackSection.display = 'block';
   }
 
   hidePopup() {
-    this.isDisplayPopUp = false;
     this.feedbackSection.display = "none";
     this.feedbackSection.display1 = "none";
   }
