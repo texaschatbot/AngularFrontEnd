@@ -17,65 +17,65 @@
           <p style="color:black; text-align:center">Please share your comments/feedback here.</p>
           <div class="form-group">
             <form id="feedback_form">
-              <textarea class="form-control" id="feedback_txt" placeholder="Type your comments/feedback." rows="7" [(ngModel)]="formValue" name="formValue"  onfocus="this.value=''"></textarea>
+              <textarea class="form-control" id="feedback_txt" placeholder="Type your comments/feedback." rows="7" [(ngModel)]="feedbackSection.feedback" name="formValue"  onfocus="this.value=''"></textarea>
               <input class="form-control" id="hdn_EnterpriseId" type="hidden" value="">
               <br />
               <br />
               <p style="color:black; font-weight:bold;text-align:center">How would you rate the UI</p>
               <fieldset class="rating" id="ratingStars">
-                <input type="radio" value="5" [checked]="rating===5" />
-                <label (click)='onClick(5)'>5 stars</label>
+                <input type="radio" value="5" [checked]="feedbackSection.rating===5" />
+                <label (click)='doRateUI(5)'>5 stars</label>
 
-                <input type="radio" value="4" [checked]="rating===4" />
-                <label (click)='onClick(4)'>4 stars</label>
+                <input type="radio" value="4" [checked]="feedbackSection.rating===4" />
+                <label (click)='doRateUI(4)'>4 stars</label>
 
-                <input type="radio" value="3" [checked]="rating===3" />
-                <label (click)='onClick(3)'>3 stars</label>
+                <input type="radio" value="3" [checked]="feedbackSection.rating===3" />
+                <label (click)='doRateUI(3)'>3 stars</label>
 
-                <input type="radio" value="2" [checked]="rating===2" />
-                <label (click)='onClick(2)'>2 stars</label>
+                <input type="radio" value="2" [checked]="feedbackSection.rating===2" />
+                <label (click)='doRateUI(2)'>2 stars</label>
 
-                <input type="radio" value="1" [checked]="rating===1" />
-                <label (click)='onClick(1)'>1 star</label>
+                <input type="radio" value="1" [checked]="feedbackSection.rating===1" />
+                <label (click)='doRateUI(1)'>1 star</label>
               </fieldset>
               <br />
               <br />
               <p style="color:black; font-weight:bold;">How would you rate the Responses</p>
               <fieldset class="rating" id="ratingResponses">
-                <input type="radio" value="5" [checked]="ratingResponse===5" />
-                <label (click)='onClick1(5)'>5 stars</label>
+                <input type="radio" value="5" [checked]="feedbackSection.ratingResponse===5" />
+                <label (click)='doRateResponse(5)'>5 stars</label>
 
-                <input type="radio" value="4" [checked]="ratingResponse===4" />
-                <label (click)='onClick1(4)'>4 stars</label>
+                <input type="radio" value="4" [checked]="feedbackSection.ratingResponse===4" />
+                <label (click)='doRateResponse(4)'>4 stars</label>
 
-                <input type="radio" value="3" [checked]="ratingResponse===3" />
-                <label (click)='onClick1(3)'>3 stars</label>
+                <input type="radio" value="3" [checked]="feedbackSection.ratingResponse===3" />
+                <label (click)='doRateResponse(3)'>3 stars</label>
 
-                <input type="radio" value="2" [checked]="ratingResponse===2" />
-                <label (click)='onClick1(2)'>2 stars</label>
+                <input type="radio" value="2" [checked]="feedbackSection.ratingResponse===2" />
+                <label (click)='doRateResponse(2)'>2 stars</label>
 
-                <input type="radio" value="1" [checked]="ratingResponse===1" />
-                <label (click)='onClick1(1)'>1 star</label>
+                <input type="radio" value="1" [checked]="feedbackSection.ratingResponse===1" />
+                <label (click)='doRateResponse(1)'>1 star</label>
               </fieldset>
 
               <br />
               <br />
               <p style="color:black; font-weight:bold;">Overall Experience</p>
               <fieldset class="rating" id="ratingOverAll">
-                <input type="radio" value="5" [checked]="ratingAll===5" />
-                <label (click)='onClick2(5)'>5 stars</label>
+                <input type="radio" value="5" [checked]="feedbackSection.ratingAll===5" />
+                <label (click)='doRateAll(5)'>5 stars</label>
 
-                <input type="radio" value="4" [checked]="ratingAll===4" />
-                <label (click)='onClick2(4)'>4 stars</label>
+                <input type="radio" value="4" [checked]="feedbackSection.ratingAll===4" />
+                <label (click)='doRateAll(4)'>4 stars</label>
 
-                <input type="radio" value="3" [checked]="ratingAll===3" />
-                <label (click)='onClick2(3)'>3 stars</label>
+                <input type="radio" value="3" [checked]="feedbackSection.ratingAll===3" />
+                <label (click)='doRateAll(3)'>3 stars</label>
 
-                <input type="radio" value="2" [checked]="ratingAll===2" />
-                <label (click)='onClick2(2)'>2 stars</label>
+                <input type="radio" value="2" [checked]="feedbackSection.ratingAll===2" />
+                <label (click)='doRateAll(2)'>2 stars</label>
 
-                <input type="radio" value="1" [checked]="ratingAll===1" />
-                <label (click)='onClick2(1)'>1 star</label>
+                <input type="radio" value="1" [checked]="feedbackSection.ratingAll===1" />
+                <label (click)='doRateAll(1)'>1 star</label>
               </fieldset>
 
             </form>
@@ -97,7 +97,7 @@
 
 
   <div class="improve_feedback_popup">
-    <div tabindex="-1" class="modal" role="dialog" [ngStyle]="{'display':display1}" id="successmessage">
+    <div tabindex="-1" class="modal" role="dialog" [ngStyle]="{'display':feedbackSection.display1}" id="successmessage">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">

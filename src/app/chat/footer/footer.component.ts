@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FeedbackSection } from '../feedback.section';
 
 @Component({
   selector: 'footer',
@@ -7,11 +8,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class FooterComponent {
 
-  @Output() displayPopup = new EventEmitter();
-  isDisplayPopUp : boolean = false;
+  @Input()
+  feedbackSection: FeedbackSection;
 
   showFeedBackForm() {
-    this.isDisplayPopUp = true;
-    this.displayPopup.emit(this.isDisplayPopUp);
+      document.getElementById('feedbackButton').style.display = "none";
+      this.feedbackSection.display = 'block';
   }
 }

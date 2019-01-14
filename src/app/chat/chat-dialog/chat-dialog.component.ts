@@ -1,9 +1,7 @@
-import { Component, ViewChild, ElementRef, HostListener } from '@angular/core';
-import { ChatService } from '../chat.service';
+import { Component, HostListener } from '@angular/core';
 import 'rxjs/add/operator/scan';
-import { VoteService } from '../vote.service';
-import { FeedbackComponent } from '../feedback/feedback.component';
 import { FeedbackSection } from '../feedback.section';
+import { FeedbackComponent } from '../feedback/feedback.component';
 
 @Component({
   selector: 'chat-dialog',
@@ -11,28 +9,18 @@ import { FeedbackSection } from '../feedback.section';
   styleUrls: ['./chat-dialog.component.css']
 })
 export class ChatDialogComponent {
-  feedbackSection: FeedbackSection = new FeedbackSection('none', 'none', 0, 0, 0);
+
+  feedbackSection: FeedbackSection = new FeedbackSection('none', 'none', '', 0, 0, 0);
+
+  constructor(private feedbackComponent: FeedbackComponent) {
+
+  }
 
   @HostListener('document:keydown', ['$event'])
   onKeyDownHandler(event: KeyboardEvent) {
     if (event.key === "Escape") {
-      this.feedbackSection.display = 'none';
-      document.getElementById('feedbackButton').style.display = "block";
-      this.feedbackSection.rating = null;
-      this.feedbackSection.ratingResponse = null;
-      this.feedbackSection.ratingAll = null;
+      this.feedbackComponent.feedbackSection = this.feedbackSection;
+      this.feedbackComponent.resetFeedbackForm();
     }
-  }
-
-
-  showPopup(isDisplayPopUp) {
-    ////////////
-    document.getElementById('feedbackButton').style.display = "none";
-    this.feedbackSection.display = 'block';
-  }
-
-  hidePopup() {
-    this.feedbackSection.display = "none";
-    this.feedbackSection.display1 = "none";
   }
 }

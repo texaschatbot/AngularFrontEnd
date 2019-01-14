@@ -1,6 +1,6 @@
 
 <div id="wrapper">
-  <div class="d-flex flex-column" [ngClass]="{'blur': display=='block' || display1=='block'}">
+  <div class="d-flex flex-column" [ngClass]="{'blur': feedbackSection.display=='block' || feedbackSection.display1=='block'}">
 
     <div class="p-2 bg-secondary1 text-white">
       <!-- Header Seaction -->
@@ -20,15 +20,15 @@
   </div>
 
   <!-- Footer Component -->
-  <div [ngClass]="{'blur': display=='block' || display1=='block'}">
-    <footer (displayPopup)="showPopup($event)"></footer>
+  <div [ngClass]="{'blur': feedbackSection.display=='block' || feedbackSection.display1=='block'}">
+    <footer [feedbackSection] ="feedbackSection"></footer>
   </div>
 </div>
 
 
 <!-- Pop Up-->
 <div>
-  <feedback [feedbackSection] ="feedbackSection" (hidePopup)="hidePopup($event)"></feedback>
+  <feedback [feedbackSection] ="feedbackSection"></feedback>
 </div>
 
 <script>

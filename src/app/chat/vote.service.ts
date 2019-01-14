@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ChatService } from './chat.service';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { FeedbackSection } from './feedback.section';
 
 
 @Injectable({
@@ -48,14 +49,14 @@ export class VoteService {
     });
   }
 
-  postComments(feedback, ratingUI, ratingAll, ratingResponse) {
+  postComments(feedbackSection: FeedbackSection) {
     this.feedbackCollection.doc(`detailFeedback`).ref.get().then((doc) => {
       let feedbackDetail = {};
       feedbackDetail['date'] = new Date();
-      feedbackDetail['comments'] = feedback;
-      feedbackDetail['ratingUI'] = ratingUI;
-      feedbackDetail['ratingResponse'] = ratingResponse;
-      feedbackDetail['ratingAll'] = ratingAll;
+      feedbackDetail['comments'] = feedbackSection.feedback;
+      feedbackDetail['ratingUI'] = feedbackSection.rating;
+      feedbackDetail['ratingResponse'] = feedbackSection.ratingResponse;
+      feedbackDetail['ratingAll'] = feedbackSection.ratingAll;
       this.feedbackCollection.doc(`detailFeedback`).collection('UserFeedback').add(feedbackDetail);
     });
   }

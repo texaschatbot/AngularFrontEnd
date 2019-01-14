@@ -1,11 +1,12 @@
 export class FeedbackSection {
 
-  constructor(private _display: String, private _display1: String, private _rating: number, private _ratingResponse: number, private _ratingAll : number) {
+  constructor(private _display: String, private _display1: String, private _feedback, private _rating: number, private _ratingResponse: number, private _ratingAll : number) {
     this._display = _display;
     this._display1 = _display1;
     this._rating = _rating;
     this._ratingResponse = _ratingResponse;
     this._ratingAll = _ratingAll;
+    this._feedback = _feedback;
   }
 
 
@@ -47,6 +48,14 @@ export class FeedbackSection {
 
   set ratingAll(_ratingAll: number) {
     this._ratingAll = _ratingAll;
+  }
+
+  get feedback() {
+    return this._feedback;
+  }
+
+  set feedback(_feedback: String) {
+    this._feedback = _feedback;
   }
   
 }
