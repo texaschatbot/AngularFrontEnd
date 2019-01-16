@@ -1,0 +1,26 @@
+
+<div style="width :100%; padding-bottom:20px;">
+  <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top" style="background-color:#3b3978 !important;">
+    <div style="width: 50%; float:left;">
+      <div style="font-weight: bold; color:white !important;"><h2>TeXA</h2></div>
+      <div style="font-weight: bold; color:white !important;" class="fas fa-users">  Texas Assistant </div>
+    </div>
+    <div style="width: 50%; float:right;">
+   
+
+      <div  id="navbarsExampleDefault" style="float:right;">
+        <ul class="navbar-nav mr-auto">
+          <ng-template #adminUser>
+            <li class="nav-item active" style="cursor:pointer">
+              <a class="navbar-brand poister-cursor" style="color:white !important;" (click)="logout()">Logout</a>
+            </li>
+          </ng-template>
+          <li *ngIf="!(authService.user$ | async); else adminUser" class="nav-item active">
+            <a class="navbar-brand poister-cursor" style="color:white !important;" id="login" routerLink="/login">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</div>

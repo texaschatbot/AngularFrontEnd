@@ -527,3 +527,12 @@ ul {
 .blur {
   filter: blur(4px);
 }
+
+
+
+
+
+
+.page-item.disabled .page-link {
+  border-width:0px !important;
+}

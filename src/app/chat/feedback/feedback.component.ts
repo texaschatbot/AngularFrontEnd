@@ -30,7 +30,7 @@ export class FeedbackComponent {
   }
 
   postComments() {
-    this.voteService.postComments(this.feedbackSection);
+    this.voteService.postComments(this.feedbackSection.feedback, this.feedbackSection.rating, this.feedbackSection.ratingResponse, this.feedbackSection.ratingAll);
     this.resetFeedbackForm();
     this.feedbackSection.display1 = 'block';
   }
