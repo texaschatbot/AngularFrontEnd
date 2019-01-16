@@ -11,13 +11,13 @@
         </div>
 
         <!-- modal-body -->
-        <div class="modal-body">
+        <div class="modal-body" id="modelBody">
 
           <h2 class="modal-title">Feedback</h2>
           <p style="color:black; text-align:center">Please share your comments/feedback here.</p>
           <div class="form-group">
             <form id="feedback_form">
-              <textarea class="form-control" id="feedback_txt" placeholder="Type your comments/feedback." rows="7" [(ngModel)]="feedbackSection.feedback" name="formValue"  onfocus="this.value=''"></textarea>
+              <textarea class="form-control" id="feedback_txt" placeholder="Type your comments/feedback." rows="7" [(ngModel)]="feedbackSection.feedback" name="formValue" onfocus="this.value=''"></textarea>
               <input class="form-control" id="hdn_EnterpriseId" type="hidden" value="">
               <br />
               <br />
@@ -81,13 +81,17 @@
             </form>
           </div>
           <br />
-          <div class="modal-footer">
-            <button class="btn btn-primary" [disabled]="check()" id="feedback_button" aria-label="Close" (click)="postComments()" type="button" data-toggle="modal" data-target="successmessage" data-dismiss="modal">Post</button>
-          </div>
         </div>
         <!-- modal-footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" (click)="closeModalDialog()">Close</button>
+          <button class="btn btn-primary"
+                  style="background-color:#3b3978 !important;"
+                  [disabled]="check()" id="feedback_button"
+                  aria-label="Close" (click)="postComments()"
+                  type="button" data-toggle="modal"
+                  data-target="successmessage"
+                  data-dismiss="modal">Post</button>
+          <button type="button" class="btn btn-primary" style="background-color:#3b3978 !important;" (click)="closeModalDialog()">Close</button>
         </div>
 
       </div>

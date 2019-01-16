@@ -41,9 +41,14 @@ export class ReviewFeedbackComponent {
       if (this.totalComments % this.recordsPerPage != 0) {
         this.totalPages = this.totalPages + 1;
       }
+      console.log(this.totalPages);
+      this.totalPages = (this.totalPages) - 0.5;
+
+
       this.totalPages = +this.totalPages.toFixed();
 
-      console.log(this.totalComments);
+      console.log("Total Comments : " +this.totalComments);
+      console.log("Total Pages " + this.totalPages)
       this.next();
     });
     this.createChart();
@@ -121,6 +126,7 @@ export class ReviewFeedbackComponent {
 
   next() {
     this.pageNumber = this.pageNumber + 1;
+    console.log("Page No " + this.pageNumber);
     this.itemsCollection = this.afs.collection<any>(
       '/feedback/detailFeedback/UserFeedback',
       ref => ref.orderBy('date', 'desc')

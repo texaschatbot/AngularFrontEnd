@@ -27,10 +27,10 @@
     <tbody>
       <tr *ngFor="let project of deployment$ | async">
         <td>{{ project.date.seconds * 1000 | date:'MM-dd-yyyy' }}</td>
-        <td id="deployName">{{ project.comments }}</td>
-        <td id="deployName">{{ project.ratingUI }}</td>
-        <td id="deployName">{{ project.ratingResponse }}</td>
-        <td id="deployName">{{ project.ratingAll }}</td>
+        <td id="deployName">{{ project.comments != "" ? project.comments : "N/A"}}</td>
+        <td id="deployName1">{{ project.ratingUI != 0 ? project.ratingUI : "N/A"}}</td>
+        <td id="deployName2">{{ project.ratingResponse != 0 ? project.ratingResponse : "N/A" }}</td>
+        <td id="deployName3">{{ project.ratingAll != 0 ? project.ratingAll : "N/A" }}</td>
       </tr>
     </tbody>
   </table>

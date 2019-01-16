@@ -61,7 +61,7 @@ export class VoteService {
     this.feedbackCollection.doc(`detailFeedback`).ref.get().then((doc) => {
       let feedbackDetail = {};
       feedbackDetail['date'] = new Date();
-      feedbackDetail['comments'] = comment;
+      feedbackDetail['comments'] = comment.trim();
       feedbackDetail['ratingUI'] = rating;
       feedbackDetail['ratingResponse'] = ratingResponse;
       feedbackDetail['ratingAll'] = ratingAll;
