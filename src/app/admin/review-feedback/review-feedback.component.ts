@@ -20,6 +20,8 @@ export class ReviewFeedbackComponent {
   recordsPerPage: number = 6;
   isNotEmpty: boolean = false;
 
+  queryCountMapHeader: String = "Up Vote and Down Vote Count (total queries served ";
+
   myData = [];
   myData1 = [];
 
@@ -88,7 +90,7 @@ export class ReviewFeedbackComponent {
       let total = doc.data().total;
       this.myData1.push(['No Response', total - upVote - downVote]);
 
-      
+      this.queryCountMapHeader = this.queryCountMapHeader + total + ")";
 
 
       
