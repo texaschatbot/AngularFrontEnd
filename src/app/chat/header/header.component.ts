@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FactsService } from '../facts.service';
 
 @Component({
   selector: 'header',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  childSupportfacts: String[];
+
+  constructor(private factsService: FactsService) {
+  }
 
   ngOnInit() {
+    this.childSupportfacts = this.factsService.facts;
   }
+
 
 }

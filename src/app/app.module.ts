@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { ChatModule } from './chat/chat.module';
+import { AdminModule } from './admin/admin.module';
+import { RouterModule } from '@angular/router';
+import { ChatDialogComponent } from './chat/chat-dialog/chat-dialog.component';
 
 @NgModule({
   declarations: [
@@ -11,7 +14,10 @@ import { ChatModule } from './chat/chat.module';
   ],
   imports: [
     BrowserModule,
-    ChatModule
+    ChatModule,
+    AdminModule,
+    RouterModule.forRoot([
+      { path: '', component: ChatDialogComponent }]),
   ],
   providers: [],
   bootstrap: [AppComponent]

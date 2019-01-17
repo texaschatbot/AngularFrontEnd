@@ -4,25 +4,27 @@ import { ApiAiClient } from 'api-ai-javascript/es6/ApiAiClient';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 export class Message {
-
-  constructor(public contant: string, public sentBy: string,
-        public showtime: number, public subMessages?: String[]) {
+  constructor(public contant: string, public sentBy: string, public showtime: number, public subMessages?: String[]) {
   }
 }
 
-
+export class User {
+  constructor(
+    public id: string,
+    public name: string,
+    public username: string,
+    public email: string
+  ) { }
+}
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
-  
+
   readonly token = environment.dialogflow.angularBot;
   readonly client = new ApiAiClient({ accessToken: this.token });
 
   conversation = new BehaviorSubject<Message[]>([]);
-  
-  constructor() {
-  }
 
   update(msg: Message) {
     this.conversation.next([msg]);
@@ -48,8 +50,6 @@ export class ChatService {
       }
       const botMessage = new Message(speech, 'TeXA', Date.now(), subMessages);
       this.update(botMessage);
-
-
     });
   }
 }
