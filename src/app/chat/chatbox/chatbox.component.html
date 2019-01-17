@@ -1,37 +1,31 @@
-<div scroll-glue #scrollMe class="footer-chat scrollbar" id="style-2">
-    <div style="height:10px; background-color:white;"></div>
-    <ng-container *ngFor="let message of messages | async; let i = index; last as isLast">
+<div class="footer-chat scrollbar chat-background" id="style-2" #scrollMe>
 
-      <div class="message" [ngClass]="{'from' : message.sentBy === 'TeXA',
-                'to' : message.sentBy === 'You'}">
-        <span>{{message.sentBy}}</span>
-        <br>
-        <div [innerHTML]="message.contant  | linkify: 'message_value_' + i"></div>
-
-        <ng-container *ngFor="let subMessage of message.subMessages">
-          {{subMessage}} <br>
-        </ng-container>
-
-        <div *ngIf="message.sentBy === 'TeXA'">
-          <vote></vote>
-        </div>
-
-
-        <div style="text-align:right">
-          <p style="font-size:small;">{{message.showtime | date:'short'}}</p>
-        </div>
-
+  <ng-container *ngFor="let message of messages | async; let i = index; last as isLast">
+    <div class="message bubble"
+         [ngClass]="{'from me' : message.sentBy === 'TeXA',
+                'to you' : message.sentBy === 'You'}">
+      <span style="color:darkcyan; font-weight:bold">{{message.sentBy}}</span>
+      <br />
+      <div [innerHTML]="message.contant  | linkify"> </div>
+      <ng-container *ngFor="let subMessage of message.subMessages">
+        {{subMessage}}<br>
+      </ng-container>
+      <div *ngIf="message.sentBy === 'TeXA'">
+        <vote></vote>
       </div>
-    </ng-container>
-  </div>
-
-  <div class="input-group mb-3 footer">
-    <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text" style="width:70%;" placeholder="Enter Your Message"
-      aria-label="Enter Your Message" aria-describedby="button-addon2">
-    <div class="input-group-append">
-      <button (click)="sendMessage()" class="btn btn-primary bg-secondary" style="border-color:aliceblue !important"
-        type="button" id="button-addon2">
-        Send TeXA
-      </button>
+      <br />
+      <div><p style="font-size:small;text-align:right; color:darkcyan;font-weight:bold">{{message.showtime | date:'MMM d, y h:mm:ss a'}}</p></div>
     </div>
+
+  </ng-container>
+
+</div>
+<div class="input-group mb-3 footer">
+  <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text" style="width:70%;"
+         placeholder="Enter Your Message" aria-label="Enter Your Message" aria-describedby="button-addon2">
+
+  <div class="input-group-append">
+    <button (click)="sendMessage()" class="btn send-style" value=""
+            type="button" id="button-addon2"></button>
   </div>
+</div>

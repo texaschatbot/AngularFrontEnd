@@ -1,11 +1,14 @@
 <div *ngIf="!isVoted">
-<button class="btn btn-link fas fa-thumbs-up" (click)="upVote()"></button>
-<button class="btn btn-link fas fa-thumbs-down" (click)="downVote()"></button>
+  <button class="far fa-thumbs-up" (click)="upVote()"></button>
+  <button class="far fa-thumbs-down" (click)="downVote()"></button>
 </div>
 
 <div *ngIf="showloader" class="alert alert-primary" role="alert">
-  Thanks for your feedback.
+  Thank you for your feedback. You can also click on the feedback link below and add your comments.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
+
 </div>
+
+

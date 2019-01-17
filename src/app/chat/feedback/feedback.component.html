@@ -1,0 +1,122 @@
+
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':feedbackSection.display}" id="feedbackModal">
+    <!-- modal-dialog -->
+    <div class="modal-dialog" role="document">
+      <!-- modal-content -->
+      <div class="modal-content">
+        <!-- modal-header -->
+        <div class="modal-header">
+          <button type="button" class="close" aria-label="Close" (click)="closeModalDialog()"><span aria-hidden="true">&times;</span></button>
+
+        </div>
+
+        <!-- modal-body -->
+        <div class="modal-body" id="modelBody">
+
+          <h2 class="modal-title">Feedback</h2>
+          <p style="color:black; text-align:center">Please share your comments/feedback here.</p>
+          <div class="form-group">
+            <form id="feedback_form">
+              <textarea class="form-control" id="feedback_txt" placeholder="Type your comments/feedback." rows="7" [(ngModel)]="feedbackSection.feedback" name="formValue" onfocus="this.value=''"></textarea>
+              <input class="form-control" id="hdn_EnterpriseId" type="hidden" value="">
+              <br />
+              <br />
+              <p style="color:black; font-weight:bold;text-align:center">How would you rate the UI</p>
+              <fieldset class="rating" id="ratingStars">
+                <input type="radio" value="5" [checked]="feedbackSection.rating===5" />
+                <label (click)='doRateUI(5)'>5 stars</label>
+
+                <input type="radio" value="4" [checked]="feedbackSection.rating===4" />
+                <label (click)='doRateUI(4)'>4 stars</label>
+
+                <input type="radio" value="3" [checked]="feedbackSection.rating===3" />
+                <label (click)='doRateUI(3)'>3 stars</label>
+
+                <input type="radio" value="2" [checked]="feedbackSection.rating===2" />
+                <label (click)='doRateUI(2)'>2 stars</label>
+
+                <input type="radio" value="1" [checked]="feedbackSection.rating===1" />
+                <label (click)='doRateUI(1)'>1 star</label>
+              </fieldset>
+              <br />
+              <br />
+              <p style="color:black; font-weight:bold;">How would you rate the Responses</p>
+              <fieldset class="rating" id="ratingResponses">
+                <input type="radio" value="5" [checked]="feedbackSection.ratingResponse===5" />
+                <label (click)='doRateResponse(5)'>5 stars</label>
+
+                <input type="radio" value="4" [checked]="feedbackSection.ratingResponse===4" />
+                <label (click)='doRateResponse(4)'>4 stars</label>
+
+                <input type="radio" value="3" [checked]="feedbackSection.ratingResponse===3" />
+                <label (click)='doRateResponse(3)'>3 stars</label>
+
+                <input type="radio" value="2" [checked]="feedbackSection.ratingResponse===2" />
+                <label (click)='doRateResponse(2)'>2 stars</label>
+
+                <input type="radio" value="1" [checked]="feedbackSection.ratingResponse===1" />
+                <label (click)='doRateResponse(1)'>1 star</label>
+              </fieldset>
+
+              <br />
+              <br />
+              <p style="color:black; font-weight:bold;">Overall Experience</p>
+              <fieldset class="rating" id="ratingOverAll">
+                <input type="radio" value="5" [checked]="feedbackSection.ratingAll===5" />
+                <label (click)='doRateAll(5)'>5 stars</label>
+
+                <input type="radio" value="4" [checked]="feedbackSection.ratingAll===4" />
+                <label (click)='doRateAll(4)'>4 stars</label>
+
+                <input type="radio" value="3" [checked]="feedbackSection.ratingAll===3" />
+                <label (click)='doRateAll(3)'>3 stars</label>
+
+                <input type="radio" value="2" [checked]="feedbackSection.ratingAll===2" />
+                <label (click)='doRateAll(2)'>2 stars</label>
+
+                <input type="radio" value="1" [checked]="feedbackSection.ratingAll===1" />
+                <label (click)='doRateAll(1)'>1 star</label>
+              </fieldset>
+
+            </form>
+          </div>
+          <br />
+        </div>
+        <!-- modal-footer -->
+        <div class="modal-footer">
+          <button class="btn btn-primary"
+                  style="background-color:#3b3978 !important;"
+                  [disabled]="check()" id="feedback_button"
+                  aria-label="Close" (click)="postComments()"
+                  type="button" data-toggle="modal"
+                  data-target="successmessage"
+                  data-dismiss="modal">Post</button>
+          <button type="button" class="btn btn-primary" style="background-color:#3b3978 !important;" (click)="closeModalDialog()">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="improve_feedback_popup">
+    <div tabindex="-1" class="modal" role="dialog" [ngStyle]="{'display':feedbackSection.display1}" id="successmessage">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" aria-label="Close" (click)="closeModalDialog()"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="exit_formalities">
+              <h6>Thank you</h6>
+              <div class="alert alert-success" id="showSuccessMessage">
+                Feedback submitted successfully.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

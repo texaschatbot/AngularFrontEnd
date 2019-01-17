@@ -47,4 +47,16 @@ export class ChatboxComponent implements OnInit, AfterViewChecked {
       objDiv.scrollTop = objDiv.scrollHeight;
     } catch (err) { }
   }
+
+  topFunction() {
+    var objDiv = document.getElementById('style-2');
+    objDiv.scrollTop = 0;
+
+  }
+
+  bottomFunction() {
+    var objDiv = document.getElementById('style-2');
+    //objDiv.scrollTop = this.container.scrollHeight;
+
+  }
 }

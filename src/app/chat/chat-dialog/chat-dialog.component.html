@@ -1,23 +1,41 @@
+
+<div id="wrapper">
+  <div class="d-flex flex-column" [ngClass]="{'blur': feedbackSection.display=='block' || feedbackSection.display1=='block'}">
+
+    <div class="p-2 bg-secondary1 text-white">
+      <!-- Header Seaction -->
+      <header></header>
+    </div>
+    <div class="row p-2">
+      <div class="col-sm">
+        <!-- Chatbox Component -->
+        <chatbox></chatbox>
+      </div>
+      <div class="col-sm">
+
+        <!-- Help Component -->
+        <help></help>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Component -->
+  <div [ngClass]="{'blur': feedbackSection.display=='block' || feedbackSection.display1=='block'}">
+    <footer [feedbackSection] ="feedbackSection"></footer>
+  </div>
+</div>
+
+
+<!-- Pop Up-->
+<div>
+  <feedback [feedbackSection] ="feedbackSection"></feedback>
+</div>
+
 <script>
   angular
     .module('ChatModule', ['luegg.directives', 'ngSanitize']);
 </script>
 
-<div class="d-flex flex-column">
-  <!-- Header -->
-  <div class="p-2 header-footer-color text-white">
-    <header></header>
-  </div>
-  <div class="row p-2">
-    <div class="col-sm">
-      <!-- Chat Box -->
-      <chatbox></chatbox>
-    </div>
-    <div class="col-sm">
-      <!-- Help -->
-    <help></help>
-    </div>
-  </div>
-  <!-- Fooster -->
-  <footer></footer>
-</div>
+
+
+
