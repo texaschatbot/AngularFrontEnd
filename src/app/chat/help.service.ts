@@ -67,14 +67,21 @@ export class HelpService {
         , "OAG Chart?"]));
 
     this._helpSections.push(new HelpSection("Environment", "Env", "Environment Details",
-      ["What are the database details for Predev1?"
+      ["What are the details for Predev1 database?"
         , "Provide the link for Predev1 CSI URL"]));
 
     this._helpSections.push(new HelpSection("CodeDecode", "CD", "Know about Code Decode",
-      ["What is Code Decode values for Action Type?"]));
+      ["What are the code decode values for Admin Review Level category?"]));
 
     this._helpSections.push(new HelpSection("MasterMessage", "MM", "Know about Master Message",
-      ["What is the Master Message for code 100?"]));
+      ["What is the Master Message for code 100?"])); 
+
+        this._helpSections.push(new HelpSection("DataModel", "KADM", "Know about Data Model",
+      ["What are the CI_APPLICATION table details?"]));
+
+    this._helpSections.push(new HelpSection("AutomationTesting", "ATMTEST", "Automation Testing",
+      ["Please tell me about automation testing."
+        , "How I can setup for automation testing?"]));
     
     this._helpSections.push(new HelpSection("ChildSupport", "CS", "Child Support Basics",
       ["When did child, support begin in the US?"
