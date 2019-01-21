@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ChatService } from './chat.service';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { FeedbackSection } from './feedback.section';
 
 
 @Injectable({
@@ -53,11 +52,7 @@ export class VoteService {
   }
 
   postComments(comment: String, rating: number, ratingResponse: number, ratingAll: number) {
-
-    console.log(comment);
-    console.log(rating);
-    console.log(ratingResponse);
-    console.log(ratingAll);
+    
     this.feedbackCollection.doc(`detailFeedback`).ref.get().then((doc) => {
       let feedbackDetail = {};
       feedbackDetail['date'] = new Date();
@@ -82,7 +77,7 @@ export class VoteService {
         currentValue = currentValue + 1;
         let a = {};
         a['ratingUI_count'] = currentValue;
-        this.feedbackCollection.doc(`ratingUI_count`).update(a);
+        this.feedbackCollection.doc(`count`).update(a);
       });
 
       this.feedbackCollection.doc(`count`).ref.get().then((doc) => {
@@ -90,7 +85,7 @@ export class VoteService {
         currentValue = currentValue + rating;
         let a = {};
         a['ratingUI_total'] = currentValue;
-        this.feedbackCollection.doc(`ratingUI_total`).update(a);
+        this.feedbackCollection.doc(`count`).update(a);
       }); 
     }
 
@@ -100,7 +95,7 @@ export class VoteService {
         currentValue = currentValue + 1;
         let a = {};
         a['ratingResponse_count'] = currentValue;
-        this.feedbackCollection.doc(`ratingResponse_count`).update(a);
+        this.feedbackCollection.doc(`count`).update(a);
       });
 
       this.feedbackCollection.doc(`count`).ref.get().then((doc) => {
@@ -108,7 +103,7 @@ export class VoteService {
         currentValue = currentValue + ratingResponse;
         let a = {};
         a['ratingResponse_total'] = currentValue;
-        this.feedbackCollection.doc(`ratingResponse_total`).update(a);
+        this.feedbackCollection.doc(`count`).update(a);
       });
     }
 
@@ -118,7 +113,7 @@ export class VoteService {
         currentValue = currentValue + 1;
         let a = {};
         a['ratingOverall_count'] = currentValue;
-        this.feedbackCollection.doc(`ratingOverall_count`).update(a);
+        this.feedbackCollection.doc(`count`).update(a);
       });
 
       this.feedbackCollection.doc(`count`).ref.get().then((doc) => {
@@ -126,7 +121,7 @@ export class VoteService {
         currentValue = currentValue + ratingAll;
         let a = {};
         a['ratingOverall_total'] = currentValue;
-        this.feedbackCollection.doc(`ratingOverall_total`).update(a);
+        this.feedbackCollection.doc(`count`).update(a);
       });
     }
    

@@ -93,6 +93,9 @@ button {
     background-color: #F2F2F2;
     color: #363636;
     margin-right: 100px;
+    min-width: 80%;
+    max-width: 80%;
+    width: 80%;
   }
 
     .message.to + .message.to,
