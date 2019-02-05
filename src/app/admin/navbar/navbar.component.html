@@ -3,24 +3,26 @@
   <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top" style="background-color:#3b3978 !important;">
     <div style="width: 50%; float:left;">
       <div style="font-weight: bold; color:white !important;"><h2>TeXA</h2></div>
-      <div style="font-weight: bold; color:white !important;" class="fas fa-users">  Texas Child Support Assistant </div>
+      <div style="font-weight: bold; color:white !important;" class="fas fa-users">  Texas Assistant </div>
     </div>
     <div style="width: 50%; float:right;">
-   
 
-      <div  id="navbarsExampleDefault" style="float:right;">
+      <div id="navbarsExampleDefault" style="float:right;">
         <ul class="navbar-nav mr-auto">
           <ng-template #adminUser>
             <li class="nav-item active" style="cursor:pointer">
-              <a class="navbar-brand poister-cursor" style="color:white !important;" (click)="logout()">Logout</a>
+              <a class="navbar-brand poister-cursor" style="color:white !important;" (click)="logout()"><i class="fa fa-sign-out-alt" style="color:red"></i>Logout</a>
             </li>
           </ng-template>
+          <li class="nav-item active" style="cursor:pointer">
+            <a class="navbar-brand poister-cursor" style="color:white !important;" id="chat" routerLink="/chat">ChatBot <i class="far fa-comment-dots"></i></a>
+          </li>
           <li *ngIf="!(authService.user$ | async); else adminUser" class="nav-item active">
             <!--<a class="navbar-brand poister-cursor" style="color:white !important;" id="login" routerLink="/login">Login</a>-->
           </li>
+
         </ul>
       </div>
     </div>
   </nav>
-
 </div>

@@ -9,9 +9,11 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 export class VoteService {
 
   private feedbackCollection: AngularFirestoreCollection<any>;
+  private defaultIntentCollection: AngularFirestoreCollection<any>;
 
   constructor(private afs: AngularFirestore, private chatService: ChatService) {
     this.feedbackCollection = this.afs.collection<any>('/feedback');
+    this.defaultIntentCollection = this.afs.collection<any>('/defaultIntentResponse');
   }
 
   countDocument() {
@@ -32,12 +34,27 @@ export class VoteService {
   downVote() {
     this.feedbackCollection.doc(`count`).ref.get().then((doc) => {
       var currentValue = doc.data().downVote;
+      console.log("currentValue" + currentValue);
       currentValue = currentValue + 1;
       let a = {};
       a['downVote'] = currentValue;
+      if (isNaN(a['downVote'])) {
+        a['downVote'] = 1;
+      }
+      console.log("currentValue" + a['downVote']);
       this.feedbackCollection.doc(`count`).update(a);
     });
+    let downVoteQuesAns = {};
+    downVoteQuesAns['date'] = new Date();
+    this.feedbackCollection.doc(`detailFeedback`).ref.get().then((doc) => {
+      downVoteQuesAns['Question'] = this.chatService.userMessage.contant;
+      downVoteQuesAns['Answer'] = this.chatService.conversation.value[0].contant;
+      this.feedbackCollection.doc(`detailFeedback`).collection('DownVoteQuesAns').add(downVoteQuesAns);
+    });
 
+  }
+  countDefaultIntentDocument() {
+    return this.defaultIntentCollection.doc(`intentDetails`).ref.get();
   }
 
   incrementTotalCount() {
