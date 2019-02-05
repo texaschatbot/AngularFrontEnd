@@ -1,7 +1,6 @@
 
 <navbar></navbar>
-
-<form [formGroup]="form" (ngSubmit)="login()">
+<form [formGroup]="form" (ngSubmit)="login()" class="form-style">
   <h2>Login</h2>
   <br />
   <br />
@@ -9,27 +8,31 @@
   <div *ngIf="form.errors?.inalidLogin" class="alert alert-danger">
     The Username Or Password Is Invalid
   </div>
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input formControlName="username"
-           id="username"
-           type="text"
-           class="form-control"
-           style="width: 40%;">
-    <div *ngIf="(form.get('username').touched || form.get('username').errors?.buttonClick) && form.get('username').invalid" class="alert alert-danger">
-      <div *ngIf="form.get('username').errors">Enter Valid Value For Username</div>
+  <div class="main-form">
+    <div class="form-group">
+      <label for="username" class="fa fa-user"></label>
+      <input formControlName="username" placeholder="UserName"
+             id="username" required
+             type="text"
+             class="input-form"
+             style="width: 50%;">
+      <div *ngIf="(form.get('username').touched || form.get('username').errors?.buttonClick) && form.get('username').invalid" class="alert alert-danger">
+        <div *ngIf="form.get('username').errors">Enter Valid Value For Username</div>
+
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input formControlName="password"
-           id="password"
-           type="password"
-           class="form-control"
-           style="width: 40%;">
-    <div *ngIf="(form.get('password').touched || form.get('password').errors?.buttonClick) && form.get('password').invalid" class="alert alert-danger">
-      <div *ngIf="form.get('password').errors">Enter Valid Value Password</div>
+    <div class="form-group">
+      <label for="password" class="fa fa-key"></label>
+      <input formControlName="password" placeholder="Password"
+             id="password"
+             type="password"
+             class="input-form"
+             style="width: 50%;">
+      <div *ngIf="(form.get('password').touched || form.get('password').errors?.buttonClick) && form.get('password').invalid" class="alert alert-danger">
+        <div *ngIf="form.get('password').errors">Enter Valid Value Password</div>
+      </div>
     </div>
+    <button id="loginButton" class="btn btn-primary btn-right-space bg-dark login-button" style="background-color:#3b3978 !important;" type="submit"><i class="fa fa-sign-in-alt"> LOGIN</i></button>
   </div>
-  <button id="loginButton" class="btn btn-primary btn-right-space bg-dark" style="background-color:#3b3978 !important;" type="submit">Login</button>
+
 </form>

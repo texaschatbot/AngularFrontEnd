@@ -28,7 +28,7 @@ export class LoginComponent {
           inalidLogin: true
         });**/
 
-    } else {
+    } else if (this.form.get('username').errors != null && this.form.get('password').errors != null) {
       this.form.get('username').setErrors({
         buttonClick: true
       });
@@ -36,5 +36,16 @@ export class LoginComponent {
         buttonClick: true
       });
     }
+    else if (this.form.get('password').errors != null) {
+      this.form.get('password').setErrors({
+        buttonClick: true
+      });
+    }
+    else if (this.form.get('username').errors != null) {
+      this.form.get('username').setErrors({
+        buttonClick: true
+      });
+    }
   }
+
 }

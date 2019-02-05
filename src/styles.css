@@ -550,5 +550,152 @@ ul {
 
 
 .page-item.disabled .page-link {
-  border-width:0px !important;
+  border-width: 0px !important;
+}
+
+
+.form-style {
+  margin-left: 25%;
+  margin-right: 15%;
+  width: 70%;
+}
+
+.form-group .label {
+  color: #aaa;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  position: relative;
+  padding: 20px;
+}
+
+label {
+  position: absolute;
+  /* left: 180px; */
+  background-color: darkgrey;
+  border-radius: 3px 0px 0px 3px;
+  border-right: 3px solid lightgrey;
+  color: #606468;
+  display: block;
+  float: left;
+  line-height: 50px;
+  text-align: center;
+  width: 35px;
+  height: 37px
+}
+
+.fa-user {
+  color: green;
+}
+
+.fa-key {
+  color: goldenrod;
+}
+
+
+.input-form {
+  width: 100%;
+  height: calc(2.25rem + 2px);
+  padding-left: 35px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 25px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.login-button {
+  margin-left: 17%;
+  margin-right: 15%;
+  border-radius: 25px;
+}
+
+.main-form {
+  border-style: ridge;
+  width: 70%;
+  text-align: center;
+  background-color: lightgray;
+  border-radius: 25px;
+  border-top: 3px solid #434a52;
+  border-bottom: 3px solid #434a52;
+  box-shadow: 10px 10px 5px grey;
+  padding-bottom: 10px
+}
+
+div.alert-danger {
+  border-color: lightgray;
+  background-color: lightgray;
+  font-weight: bold;
+}
+
+label.fa {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 2;
+  font-family: "Font Awesome 5 Free";
+  background-color: darkgrey;
+  border: 0;
+  border-radius: 25px;
+}
+
+
+#feedback-table th, #feedbackQuesAns-table th, #defaultAns-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#feedback-table tr:hover, #feedbackQuesAns-table tr:hover, #defaultAns-table tr:hover {
+  background-color: #ddd;
+}
+
+#feedback-table tr:nth-child(even), #feedbackQuesAns-table tr:nth-child(even), #defaultAns-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#feedback-table td, #feedback-table th, #feedbackQuesAns-table td, #feedbackQuesAns-table th, #defaultAns-table td, #defaultAns-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#feedbackQuesAns-table th, #feedbackQuesAns-table td, #defaultAns-table td {
+  width: 50px;
+}
+
+
+
+.login-button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.round {
+  border-radius: 50%;
+  padding: 0px 8px;
+}
+
+.previous {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 42px;
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 42px;
 }

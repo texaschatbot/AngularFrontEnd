@@ -1,10 +1,10 @@
 <form #f="ngForm" style="width=100%">
-
   <br />
   <br />
   <br />
   <br />
-  <table class="table">
+  <p style="text-align:center; font-size:x-large; font-weight:bold">Feedback Comments</p>
+  <table class="table" id="feedback-table">
     <thead>
       <tr>
         <th>
@@ -34,23 +34,103 @@
       </tr>
     </tbody>
   </table>
-
   <nav aria-label="...">
     <ul class="pagination justify-content-center">
       <li class="page-item" [class.disabled]="pageNumber <= 1" style="padding-right:50px">
-        <a class="page-link fas fa-chevron-left fa-2x" (click)="previous()"></a>
+        <a class="page-link previous round" (click)="previous()">&#8249;</a>
       </li>
 
-      <!--
-      <li *ngFor="let item of getNumber(); let i = index;" class="page-item" [class.active]="i+1 == pageNumber">
-        <a class="page-link" (click)="specificRecord(i + 1)">{{i + 1}}</a>
-      </li>
-        -->
+
       <li class="page-item" [class.disabled]="pageNumber >= totalPages">
-        <a class="page-link fas fa-chevron-right fa-2x" (click)="next()"></a>
+        <a class="page-link next round" (click)="next()">&#8250;</a>
       </li>
     </ul>
   </nav>
+
+
+
+  <br />
+  <br />
+  <br />
+  <br />
+  <p style="text-align:center; font-size:x-large; font-weight:bold">Negative Feedback Responses</p>
+  <table class="table" id="feedbackQuesAns-table">
+    <thead>
+      <tr>
+        <th>
+          Date
+        </th>
+        <th>
+          Question
+        </th>
+        <th>
+          Answer
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let questionAns of questAnswerList$ | async">
+        <td>{{ questionAns.date.seconds * 1000 | date:'MM-dd-yyyy' }}</td>
+        <td id="question">{{ questionAns.Question != "" ? questionAns.Question : "N/A"}}</td>
+        <td id="answer">{{ questionAns.Answer != "" ? questionAns.Answer : "N/A"}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="qApageNumber <= 1" style="padding-right:50px">
+        <a class="page-link previous round" (click)="previousQA()">&#8249;</a>
+      </li>
+
+      <li class="page-item" [class.disabled]="qApageNumber >= qAtotalPages">
+        <a class="page-link next round" (click)="nextQA()">&#8250;</a>
+      </li>
+    </ul>
+  </nav>
+
+  <br />
+  <br />
+  <br />
+  <br />
+  <p style="text-align:center; font-size:x-large; font-weight:bold">Default Intent Messages</p>
+  <table class="table" id="defaultAns-table">
+    <thead>
+      <tr>
+        <th>
+          Message
+        </th>
+        <th>
+          Intent Id
+        </th>
+        <th>
+          Intent Name
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let defaultIntent of defaultIntentList$ | async">
+        <td id="message">{{ defaultIntent.message!= "" ? defaultIntent.message : "N/A"}}</td>
+        <td id="id">{{ defaultIntent.intent_Id!= "" ? defaultIntent.intent_Id : "N/A"}}</td>
+        <td id="name">{{ defaultIntent.intent_Name!= "" ? defaultIntent.intent_Name : "N/A"}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="defaultQApageNumber <= 1" style="padding-right:50px">
+        <a class="page-link previous round" (click)="previousDefaultQA()">&#8249;</a>
+      </li>
+
+      <li class="page-item" [class.disabled]="defaultQApageNumber >= defaultQAtotalPages">
+        <a class="page-link next round" (click)="nextDefaultQA()">&#8250;</a>
+      </li>
+    </ul>
+  </nav>
+  <br />
+  <br />
+  <br />
+  <br />
+
   <div *ngIf="isNotEmpty">
     <div style="width: 50%; float:left;">
       <google-chart [title]="'Average Rating'"
@@ -70,5 +150,4 @@
     </div>
   </div>
 </form>
-
 

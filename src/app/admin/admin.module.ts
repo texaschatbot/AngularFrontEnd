@@ -6,7 +6,7 @@ import { ReviewFeedbackComponent } from './review-feedback/review-feedback.compo
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AuthguardService } from './authguard.service';
-
+import { ChatDialogComponent } from '../chat/chat-dialog/chat-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from './../../environments/environment';
@@ -38,12 +38,14 @@ import { GoogleChartsModule } from 'angular-google-charts';
               {
                 path: 'review-feedback', component: ReviewFeedbackComponent, canActivate: [AuthguardService]
               },
-              { path: '**', component: LoginComponent }
+              { path: '**', component: LoginComponent },
+
 
             ],
           }
         ]
-      }
+      },
+      { path: 'chat', component: ChatDialogComponent }
     ]),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
